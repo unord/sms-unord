@@ -21,8 +21,8 @@ from django.views.generic import TemplateView
 
 urlpatterns = [
     path('', TemplateView.as_view(template_name='index.html'), name='index'),
-    path('sms_app/', include('sms_app.urls'), name='admin'),
-    path('admin/', include(admin.site.urls)),
+    path('sms_app/', include('sms_app.urls')),
+    path('admin/', admin.site.urls, name='admin'),
     path('authenticate/', include('authenticate_app.urls')),
     path('', include('pages_app.urls')),
 ]
