@@ -14,7 +14,7 @@
 
 
     <!-- Title -->
-    <title>{% block title %}U/NORD fagevaluering 2022{% endblock %}</title>
+    <title>{% block title %}U/NORD SMS system{% endblock %}</title>
 
 
 
@@ -28,43 +28,17 @@
                 class="navbar-toggler-icon"></span></button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent" >
             <ul class="navbar-nav justify-content-end me-auto mb-2 mb-lg-0">                 {% if user.is_authenticated %}
-   <!-- Alm hold-->
+             <!-- Besked sys-->
                 <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
-                                                 role="button" data-bs-toggle="dropdown" aria-expanded="false">Alm hold</a>
+                                                 role="button" data-bs-toggle="dropdown" aria-expanded="false">Beskeder</a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="{% url 'eval_app_class_school_list' %}">Hold liste</a></li>
-                        <li><a class="dropdown-item" href="{% url 'eval_app_class_school_grouped_list' %}">Holdliste fordeling</a></li>
-                        <li><a class="dropdown-item" href="{% url 'eval_app_class_school_teacher_list' %}">Underviser liste</a></li>
-                        <li><a class="dropdown-item" href="{% url 'eval_app_class_school_create' %}">Opret hold</a></li>
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>
-                        <li><a class="dropdown-item" href="{% url 'eval_app_eval_url_sent_state_list' %}">Hold status liste</a></li>
-                        <li><a class="dropdown-item" href="{% url 'eval_app_eval_url_sent_state_create' %}">Opret status</a></li>
+
 
 
                     </ul>
                 </li>
                 <!-- Kursus hold-->
-                <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
-                                                 role="button" data-bs-toggle="dropdown" aria-expanded="false">Kursus hold</a>
-                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="{% url 'kursus_eval_app_class_school_list' %}">Kursus hold liste</a></li>
-                        </ul>
-                </li>
-                <!-- Bruger profil -->
-                <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
-                                                 role="button" data-bs-toggle="dropdown" aria-expanded="false"> Profil
-                    og opret bruger  </a>
-                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="{% url 'edit_profile' %}">Rediger profil info</a></li>
-                        <li><a class="dropdown-item" href="{% url 'change_password' %}">Skift din adgangskode</a></li>
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>
-                        <li><a class="dropdown-item" href="{% url 'register_user' %}">Registrer ny bruger</a></li>
-                    </ul>
-                </li>
+
 
       </ul>
 
@@ -80,8 +54,10 @@
             {% if user.is_authenticated %}
             <a href="{% url 'logout' %}" class="btn btn-primary  btn-lg " tabindex="-1" role="button"
                aria-disabled="true">Logud</a>             {% else %}
+            <a href="{% url 'admin:index' %}" class="btn btn-danger  btn-lg " tabindex="-1" role="button"
+               aria-disabled="true">Database</a>
             <a href="{% url 'login' %}" class="btn btn-primary  btn-lg " tabindex="-1" role="button"
-               aria-disabled="true">Administration</a>             {% endif %}         </div>
+               aria-disabled="true">Administration</a>   {% endif %}         </div>
     </div>
 </nav>
 <div class="container"><br/>

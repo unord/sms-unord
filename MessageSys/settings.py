@@ -33,7 +33,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
+    # my-apps
     'sms_app',
+    'pages_app.apps.PagesConfig',
+    'authenticate_app',
 ]
 
 
