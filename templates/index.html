@@ -1,0 +1,6 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="m-2"><h4>sms_app</h4></div>
+<div class="m-2"><a class="btn btn-light" href="{% url 'sms_app_Message_list' %}">Message Listing</a></div>
+<div class="m-2"><a class="btn btn-light" href="{% url 'sms_app_Recipient_list' %}">Recipient Listing</a></div>
+{% endblock %}

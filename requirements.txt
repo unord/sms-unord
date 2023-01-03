@@ -1,0 +1,4 @@
+Django>=4
+django-extensions
+djangorestframework
+python-decouple==3.4
