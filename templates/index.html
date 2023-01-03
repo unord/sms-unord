@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
 <div class="m-2"><h4>U/NORD SMS system</h4></div>
+    {% if user.is_authenticated %}
     <div class="m-2">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
         dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
@@ -9,7 +10,7 @@
         mollit anim id est laborum.
     </div>
 <div class="m-2"><a class="btn btn-info" href="{% url 'sms_app_Message_list' %}">Se SMS kø</a></div>
-
+    {% endif %}
 
     <!--- <div class="m-2"><a class="btn btn-light" href="{% url 'sms_app_Recipient_list' %}">Recipient Listing</a></div> --->
 {% endblock %}
