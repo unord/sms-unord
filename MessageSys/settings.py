@@ -24,7 +24,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
-SECURE_SSL_REDIRECT = True
+SECURE_SSL_REDIRECT = False
 
 # Application definition
 INSTALLED_APPS = [
