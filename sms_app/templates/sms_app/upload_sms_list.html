@@ -1,12 +1,10 @@
 {% extends "base.html" %}
 {% load static %}
 {% block content %}
+<h1>
+Upload excel fil
+</h1>
 
-    <p>
-        <a class="btn btn-light" href="{% url 'sms_app_Recipient_list' %}">
-            Upload besked
-        </a>
-    </p>
 
     <table class="table table-borderless">
         <tr>
@@ -151,7 +149,7 @@
                                 <textarea class="form-control" aria-label="With textarea"></textarea>
                                 </div>
                                 <div class="mb-3">
-                                    <label for="formFile" class="form-label">Default file input example</label>
+                                    <label for="formFile" class="form-label">Excel fil der skal uploades</label>
                                     <input class="form-control" type="file" id="formFile">
                                 </div>
                                 <input type="submit" value="Save" class="btn btn-primary">
