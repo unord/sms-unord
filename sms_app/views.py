@@ -1,7 +1,9 @@
+from django.shortcuts import render
 from django.views import generic
 from django.urls import reverse_lazy
 from . import models
 from . import forms
+import pandas as pd
 
 
 class MessageListView(generic.ListView):
@@ -55,7 +57,18 @@ class RecipientDeleteView(generic.DeleteView):
     model = models.Recipient
     success_url = reverse_lazy("sms_app_Recipient_list")
 
-class UploadSmsListView(generic.ListView):
-    model = models.Message
-    form_class = forms.MessageForm
+class UploadSmsListView(generic.FormView):
     template_name = "sms_app/upload_sms_list.html"
+
+
+def import_data(request):
+    if request.method == 'POST':
+        df_excel_file = pd.read_excel(request.FILES['formFile'])
+        username = request.POST['username']
+        inputGroupSelectMobile = request.POST['inputGroupSelectMobile']
+        inputGroupSelectFistName = request.POST['inputGroupSelectFistName']
+        inputGroupSelectLastName = request.POST['inputGroupSelectLastName']
+
+
+
+    return render(request, 'sms_app/import.html', {'form': form})
