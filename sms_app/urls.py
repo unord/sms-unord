@@ -21,5 +21,6 @@ urlpatterns = (
     path("sms_app/Recipient/detail/<int:pk>/", views.RecipientDetailView.as_view(), name="sms_app_Recipient_detail"),
     path("sms_app/Recipient/update/<int:pk>/", views.RecipientUpdateView.as_view(), name="sms_app_Recipient_update"),
     path("sms_app/Recipient/delete/<int:pk>/", views.RecipientDeleteView.as_view(), name="sms_app_Recipient_delete"),
+    path("sms_app/UploadSms/", views.UploadSmsListView.as_view(), name="sms_app_UploadSms_list"),
 
 )

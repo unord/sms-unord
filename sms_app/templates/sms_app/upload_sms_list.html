@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+<p>
+    <a class="btn btn-light" href="{% url 'sms_app_Recipient_list' %}">
+    Upload besked
+    </a>
+</p>
+
+<form method="post" enctype="multipart/form-data">
+  {% csrf_token %}
+  {{form.errors}}
+
+  <div class="form-group row">
+      <label class="col-sm-2 col-form-label" for="message">message: </label>
+      {{ form.message }}
+  </div>
+  <input type="submit" value="Save" class="btn btn-primary">
+</form>
+
+{% endblock %}
