@@ -8,7 +8,10 @@
     </a>
 </p>
 
-<form method="post" enctype="multipart/form-data">
+    <table class="table table-borderless">
+  <tr>
+      <td>
+          <form method="post" enctype="multipart/form-data">
   {% csrf_token %}
   {{form.errors}}
 <div class="input-group mb-3">
@@ -43,5 +46,23 @@
 </div>
   <input type="submit" value="Save" class="btn btn-primary">
 </form>
+
+      </td>
+      <td>De ved, når vi spytter, er det hit, hit
+Ændrer lyden, det' ikk' same shit
+En komma en, og det' sort på hvidt
+De var gode nok, indtil I$WAAL sket'
+To kontrakter, nu' jeg businessman
+De fin' flip flops så wavey som vand
+Flyver mod top ligesom Superman
+Og jeg' ind' i junglen ligesom Jokerman
+De vil pludselig være venner med mig
+Glemmer ikk', hvor jeg kommer fra
+Har familie, så jeg har et ansvar
+Og jeg er der kun for dem, der er der for mig</td>
+  </tr>
+</table>
+
+
 
 {% endblock %}
