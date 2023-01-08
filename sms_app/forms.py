@@ -35,3 +35,16 @@ class RecipientForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super(RecipientForm, self).__init__(*args, **kwargs)
         self.fields["message"].queryset = Message.objects.all()
+
+class UploadEXcelForm(forms.ModelForm):
+    class Meta:
+        fields = [
+            "user",
+            "time_to_send",
+            "message",
+            "excel_file",
+        ]
+
+    def __init__(self, *args, **kwargs):
+        super(RecipientForm, self).__init__(*args, **kwargs)
+        self.fields["message"].queryset = Message.objects.all()
