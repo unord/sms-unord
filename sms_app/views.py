@@ -65,7 +65,7 @@ def import_data(request):
     print("pre-post")
     if request.method == 'POST':
         print("post")
-        file = request.FILES['filename']
+        file = request.FILES['file']
         df_excel_file = pd.read_excel(file)
         print(df_excel_file)
         username = request.POST['username']
