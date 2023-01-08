@@ -67,6 +67,7 @@ def import_data(request):
         print("post")
         file = request.FILES['file']
         df_excel_file = pd.read_excel(file)
+        df_excel_file = df_excel_file.rename(columns={i:chr(i+65) for i in range(26)})
         print(df_excel_file)
         username = request.POST['username']
         inputGroupSelectMobile = request.POST['inputGroupSelectMobile']
@@ -99,4 +100,59 @@ def import_data(request):
 
 
 
-    return render(request, 'sms_app/import.html', {'form': form})
+    return render(request, 'sms_app/import.html')
+
+def letters_to_numbers(letter: str) -> int:
+    if letter.upper() == "A":
+        return 1
+    elif letter.upper() == "B":
+        return 2
+    elif letter.upper() == "C":
+        return 3
+    elif letter.upper() == "D":
+        return 4
+    elif letter.upper() == "E":
+        return 5
+    elif letter.upper() == "F":
+        return 6
+    elif letter.upper() == "G":
+        return 7
+    elif letter.upper() == "H":
+        return 8
+    elif letter.upper() == "I":
+        return 9
+    elif letter.upper() == "J":
+        return 10
+    elif letter.upper() == "K":
+        return 11
+    elif letter.upper() == "L":
+        return 12
+    elif letter.upper() == "M":
+        return 13
+    elif letter.upper() == "N":
+        return 14
+    elif letter.upper() == "O":
+        return 15
+    elif letter.upper() == "P":
+        return 16
+    elif letter.upper() == "Q":
+        return 17
+    elif letter.upper() == "R":
+        return 18
+    elif letter.upper() == "S":
+        return 19
+    elif letter.upper() == "T":
+        return 20
+    elif letter.upper() == "U":
+        return 21
+    elif letter.upper() == "V":
+        return 22
+    elif letter.upper() == "W":
+        return 23
+    elif letter.upper() == "X":
+        return 24
+    elif letter.upper() == "Y":
+        return 25
+    elif letter.upper() == "Z":
+        return 26
+
