@@ -8,6 +8,7 @@
     let switchElementInputGroupSelectFirstname = document.getElementById('id_flexSwitchCheckFirstName');
     let switchElementInputGroupSelectLastname = document.getElementById('id_flexSwitchCheckLastName');
 
+    let selectElementInputGroupSelectMobile = document.getElementById('id_inputGroupSelectMobile');
     let selectElementInputGroupSelectFirstname = document.getElementById('id_inputGroupSelectFistName');
     let selectElementInputGroupSelectLastname = document.getElementById('id_inputGroupSelectLastName');
 
@@ -22,11 +23,13 @@
     switchElementInputGroupSelectFirstname.checked = false;
     selectElementInputGroupSelectFirstname.disabled = true;
     selectElementInputGroupSelectFirstname.hidden = true
+    selectElementInputGroupSelectFirstname.value = 99;
     labelElementFirstname.hidden = true;
 
     switchElementInputGroupSelectLastname.checked = false;
     selectElementInputGroupSelectLastname.disabled = true;
     selectElementInputGroupSelectLastname.hidden = true;
+    selectElementInputGroupSelectLastname.value = 99;
     labelElementLastname.hidden = true;
 
     submitButton.disabled = true;
@@ -45,6 +48,7 @@
          else {
             selectElementInputGroupSelectFirstname.disabled = true;
             selectElementInputGroupSelectFirstname.hidden = true;
+            selectElementInputGroupSelectFirstname.value = 99;
             labelElementFirstname.hidden = true;
         }
     };
@@ -64,12 +68,21 @@
          else {
             selectElementInputGroupSelectLastname.disabled = true;
             selectElementInputGroupSelectLastname.hidden = true;
+            selectElementInputGroupSelectLastname.value = 99;
             labelElementLastname.hidden = true;
         }
     };
 
+    selectElementInputGroupSelectMobile.onchange = function() {
+        if (this.value === '0' || selectElementInputGroupSelectFirstname.value === '0' || selectElementInputGroupSelectLastname.value === '0') {
+            submitButton.disabled = true;
+        } else {
+            submitButton.disabled = false;
+        }
+    };
+
     selectElementInputGroupSelectFirstname.onchange = function() {
-        if (this.value === '0') {
+        if (this.value === '0' || selectElementInputGroupSelectLastname.value === '0' || selectElementInputGroupSelectMobile.value === '0') {
             submitButton.disabled = true;
         } else {
             submitButton.disabled = false;
@@ -77,7 +90,7 @@
     };
 
     selectElementInputGroupSelectLastname.onchange = function() {
-        if (this.value === '0') {
+        if (this.value === '0' || selectElementInputGroupSelectFirstname.value === '0' || selectElementInputGroupSelectMobile.value === '0') {
             submitButton.disabled = true;
         } else {
             submitButton.disabled = false;
