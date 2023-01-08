@@ -14,7 +14,7 @@ Upload excel fil
                     {{ form.errors }}
                     <div class="input-group mb-3">
                         <input type="text" class="form-control" placeholder="Dit brugernavn" aria-label="Dit brugernavn"
-                               aria-describedby="basic-addon2" id="username" required>
+                               aria-describedby="basic-addon2" id="id_username" name="username" required>
                         <span class="input-group-text" id="basic-addon2">@unord.dk</span>
                     </div>
 
@@ -50,7 +50,7 @@ Upload excel fil
 
 <div class="input-group mb-3">
   <label class="input-group-text" for="inputGroupSelect01">Mobil nummer</label>
-  <select class="form-select" id="inputGroupSelectMobile" required>
+  <select class="form-select" id="id_inputGroupSelectMobile" name="inputGroupSelectMobile" required>
     <option selected>Angiv Kolonne</option>
     <option value="A">A</option>
     <option value="B">B</option>
@@ -82,7 +82,7 @@ Upload excel fil
 
                     <div class="input-group mb-3">
   <label class="input-group-text" for="inputGroupSelect01">Fornavn</label>
-  <select class="form-select" id="inputGroupSelectFistName">
+  <select class="form-select" id="id_inputGroupSelectFistName" name="inputGroupSelectFistName">
     <option selected>Angiv Kolonne</option>
     <option value="A">A</option>
     <option value="B">B</option>
@@ -114,7 +114,7 @@ Upload excel fil
 
                     <div class="input-group mb-3">
   <label class="input-group-text" for="inputGroupSelect01">Efternavn</label>
-  <select class="form-select" id="inputGroupSelectLastName">
+  <select class="form-select" id="id_inputGroupSelectLastName" name="inputGroupSelectLastName">
     <option selected>Angiv Kolonne</option>
     <option value="A">A</option>
     <option value="B">B</option>
@@ -147,14 +147,12 @@ Upload excel fil
 <div class="input-group">
                     <span class="input-group-text">Hvornår skal smserne sendes</span>
 
-<input class="form-control" type="datetime-local" id="id_sms-send"
-       name="meeting-time" value="2023-01-08T19:30"
-       min="2023-01-08T19:30"  required>
+<input class="form-control" type="datetime-local" id="id_sms-send" name="sms_send" min="2023-01-08T19:30" required>
 
                 </div><br>
 <div class="input-group">
                                 <span class="input-group-text">Din besked</span>
-                                <textarea class="form-control" aria-label="With textarea"  required></textarea>
+                                <textarea class="form-control" aria-label="With textarea" id="id_message" name="message"  required></textarea>
                                 </div>
 
 
@@ -162,7 +160,7 @@ Upload excel fil
 
                     <br>
                                 <div class="mb-3">
-                                    <label for="file" class="form-label">Excel fil der skal uploades</label>
+                                    <label for="file" class="form-label">Excel fil der skal uploades- Tager kun imod .xlsx filer</label>
                                     <input class="form-control" type="file" id="file" name="file" accept=".xlsx" required>
                                 </div><br>
                                 <input type="submit"  value="Gem" class="btn btn-primary">

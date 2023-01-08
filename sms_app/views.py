@@ -72,6 +72,8 @@ def import_data(request):
         inputGroupSelectMobile = request.POST['inputGroupSelectMobile']
         inputGroupSelectFistName = request.POST['inputGroupSelectFistName']
         inputGroupSelectLastName = request.POST['inputGroupSelectLastName']
+        message = request.POST['message']
+        sms_send = request.POST['sms_send']
 
         mobile_error = []
         row_count = 0
