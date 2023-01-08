@@ -17,8 +17,12 @@
 
 
     switchElementInputGroupSelectFirstname.checked = false;
-    switchElementInputGroupSelectLastname.checked = false;
+    selectElementInputGroupSelectFirstname.disabled = true;
+    selectElementInputGroupSelectFirstname.hidden = true;
 
+    switchElementInputGroupSelectLastname.checked = false;
+    selectElementInputGroupSelectLastname.disabled = true;
+    selectElementInputGroupSelectLastname.hidden = true;
 
     switchElementInputGroupSelectFirstname.onchange = function() {
         if (this.checked) {
