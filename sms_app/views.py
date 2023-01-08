@@ -57,7 +57,7 @@ class RecipientDeleteView(generic.DeleteView):
     model = models.Recipient
     success_url = reverse_lazy("sms_app_Recipient_list")
 
-class UploadSmsListView(generic.FormView):
+class UploadSmsListView(generic.TemplateView):
     template_name = "sms_app/upload_sms_list.html"
 
 
