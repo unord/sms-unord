@@ -67,12 +67,15 @@ def import_data(request):
         print("post")
         file = request.FILES['file']
         df_excel_file = pd.read_excel(file, header=None)
-        #df_excel_file = df_excel_file.rename(columns={i:chr(i+65) for i in range(26)})
         print(df_excel_file)
-        #username = request.POST['username']
-        #inputGroupSelectMobile = request.POST['inputGroupSelectMobile']
-        #inputGroupSelectFistName = request.POST['inputGroupSelectFistName']
-        #inputGroupSelectLastName = request.POST['inputGroupSelectLastName']
+        username = request.POST['username']
+        inputGroupSelectMobile = letters_to_numbers(str(request.POST['inputGroupSelectMobile']))-1
+        inputGroupSelectFistName = letters_to_numbers(str(request.POST['inputGroupSelectFistName']))-1
+        inputGroupSelectLastName = letters_to_numbers(str(request.POST['inputGroupSelectLastName']))-1
+
+        df_to_analyze = df_excel_file[[inputGroupSelectMobile, inputGroupSelectFistName, inputGroupSelectLastName]]
+        print(df_to_analyze)
+
         #message = request.POST['message']
         #sms_send = request.POST['sms_send']
 
@@ -102,7 +105,9 @@ def import_data(request):
 
 
 def letters_to_numbers(letter: str) -> int:
-    if letter.upper() == "A":
+    if letter == "99":
+        return 99
+    elif letter.upper() == "A":
         return 1
     elif letter.upper() == "B":
         return 2
