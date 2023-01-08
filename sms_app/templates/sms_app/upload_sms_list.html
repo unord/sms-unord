@@ -12,11 +12,25 @@ Upload excel fil
                 <form action="http://10.18.225.150:8001/sms_app/sms_app/ValidateExcel/" method="post" enctype="multipart/form-data">
                     {% csrf_token %}
                     {{ form.errors }}
+                    <table class="table table-borderless">
+        <tr>
+            <td>
                     <div class="input-group mb-3">
                         <input type="text" class="form-control" placeholder="Dit brugernavn" aria-label="Dit brugernavn"
                                aria-describedby="basic-addon2" id="id_username" name="username" required>
                         <span class="input-group-text" id="basic-addon2">@unord.dk</span>
                     </div>
+            </td>
+            <td>
+               <div class="input-group">
+                    <span class="input-group-text">Hvornår skal smserne sendes</span>
+
+<input class="form-control" type="datetime-local" id="id_sms-send" name="sms_send" min="2023-01-08T19:30" required>
+
+                </div>
+            </td>
+        </tr>
+                    </table>
 
 <table class="table table-borderless">
         <tr>
@@ -158,13 +172,8 @@ Upload excel fil
 
 
 
-                    <p>
-<div class="input-group">
-                    <span class="input-group-text">Hvornår skal smserne sendes</span>
 
-<input class="form-control" type="datetime-local" id="id_sms-send" name="sms_send" min="2023-01-08T19:30" required>
-
-                </div><br>
+<br>
 <div class="input-group">
                                 <span class="input-group-text">Din besked</span>
                                 <textarea class="form-control" aria-label="With textarea" id="id_message" name="message"  required></textarea>
