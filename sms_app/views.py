@@ -75,12 +75,12 @@ def import_data(request):
 
         df_to_analyze = df_excel_file[[inputGroupSelectMobile]]
         if inputGroupSelectFistName != 99:
-            df_to_analyze = df_excel_file[[inputGroupSelectFistName]]
+            df_to_analyze.join(df_excel_file[[inputGroupSelectFistName]])
         else:
             df_to_analyze[1] = ""
 
         if inputGroupSelectLastName != 99:
-            df_to_analyze = df_excel_file[[inputGroupSelectLastName]]
+            df_to_analyze.join(df_excel_file[[inputGroupSelectLastName]])
         else:
             df_to_analyze[2] = ""
 
