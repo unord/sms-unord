@@ -62,13 +62,15 @@ class UploadSmsListView(generic.TemplateView):
 
 
 def import_data(request):
+    print("pre-post")
     if request.method == 'POST':
+        print("post")
         df_excel_file = pd.read_excel(request.FILES['formFile'])
+        print(df_excel_file)
         username = request.POST['username']
         inputGroupSelectMobile = request.POST['inputGroupSelectMobile']
         inputGroupSelectFistName = request.POST['inputGroupSelectFistName']
         inputGroupSelectLastName = request.POST['inputGroupSelectLastName']
-        print(df_excel_file)
 
         mobile_error = []
         row_count = 0
