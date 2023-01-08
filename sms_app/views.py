@@ -69,6 +69,28 @@ def import_data(request):
         inputGroupSelectFistName = request.POST['inputGroupSelectFistName']
         inputGroupSelectLastName = request.POST['inputGroupSelectLastName']
 
+        mobile_error = []
+        row_count = 0
+
+        for index, row in df_excel_file.iterrows():
+            row_count += 1
+            mobile = row[inputGroupSelectMobile]
+            mobile = str(mobile)
+            mobile = mobile.replace(" ", "")
+            mobile = mobile.replace("-", "")
+            mobile = mobile.replace("(", "")
+            mobile = mobile.replace(")", "")
+            mobile = mobile.replace("+45", "")
+            if len(mobile) != 8:
+                mobile_error.append(f"Fejl i {request.POST['inputGroupSelectMobile']}{row_count}: {mobile}")
+
+
+        for index, row in df_excel_file.iterrows():
+            mobile = row[inputGroupSelectMobile]
+            first_name = row[inputGroupSelectFistName]
+            last_name = row[inputGroupSelectLastName]
+
+
 
 
     return render(request, 'sms_app/import.html', {'form': form})
