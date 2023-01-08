@@ -144,14 +144,20 @@ Upload excel fil
   </select>
 </div>
                     <p>
-<div class= "container">
-<div class= "form">
-<input type= "text" class= "form-control" id= "example" placeholder= "enter date" style="width: 500px;">
+<div class="container" style="background-color:orange;">
+<br>
+<div class="form">
+<input type="text" class="form-control" style="width:300px;" id="example" placeholder="enter date">
 </div>
+<br>
 </div>
 <script type="text/javascript">
 $(document).ready(function(){
-$("#example").datepicker();
+$("#example").datepicker({
+"format": "m-d-yy",
+"startDate": "-10d",
+"endDate": "05-15-2020",
+});
 });
 </script>
 
