@@ -46,5 +46,5 @@ class UploadEXcelForm(forms.ModelForm):
         ]
 
     def __init__(self, *args, **kwargs):
-        super(RecipientForm, self).__init__(*args, **kwargs)
-        self.fields["message"].queryset = Message.objects.all()
+        super(MessageForm, self).__init__(*args, **kwargs)
+        self.fields["user"].queryset = User.objects.all()
