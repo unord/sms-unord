@@ -66,8 +66,8 @@ def import_data(request):
     if request.method == 'POST':
         print("post")
         file = request.FILES['file']
-        df_excel_file = pd.read_excel(file)
-        df_excel_file = df_excel_file.rename(columns={i:chr(i+65) for i in range(26)})
+        df_excel_file = pd.read_excel(file, header=None)
+        #df_excel_file = df_excel_file.rename(columns={i:chr(i+65) for i in range(26)})
         print(df_excel_file)
         #username = request.POST['username']
         #inputGroupSelectMobile = request.POST['inputGroupSelectMobile']
