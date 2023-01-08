@@ -65,7 +65,7 @@ def import_data(request):
     print("pre-post")
     if request.method == 'POST':
         print("post")
-        df_excel_file = pd.read_excel(request.FILES['formFile'])
+        df_excel_file = pd.read_excel(request.FILES['File'])
         print(df_excel_file)
         username = request.POST['username']
         inputGroupSelectMobile = request.POST['inputGroupSelectMobile']
