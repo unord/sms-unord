@@ -50,7 +50,7 @@ Upload excel fil
 
 <div class="input-group mb-3">
   <label class="input-group-text" for="inputGroupSelect01">Mobil nummer</label>
-  <select class="form-select" id="inputGroupSelectMobile">
+  <select class="form-select" id="inputGroupSelectMobile" required>
     <option selected>Angiv Kolonne</option>
     <option value="A">A</option>
     <option value="B">B</option>
@@ -149,12 +149,12 @@ Upload excel fil
 
 <input class="form-control" type="datetime-local" id="id_sms-send"
        name="meeting-time" value="2023-01-08T19:30"
-       min="2023-01-08T19:30" >
+       min="2023-01-08T19:30"  required>
 
                 </div><br>
 <div class="input-group">
                                 <span class="input-group-text">Din besked</span>
-                                <textarea class="form-control" aria-label="With textarea"></textarea>
+                                <textarea class="form-control" aria-label="With textarea"  required></textarea>
                                 </div>
 
 
@@ -163,7 +163,7 @@ Upload excel fil
                     <br>
                                 <div class="mb-3">
                                     <label for="file" class="form-label">Excel fil der skal uploades</label>
-                                    <input class="form-control" type="file" id="file" name="file">
+                                    <input class="form-control" type="file" id="file" name="file" required>
                                 </div><br>
                                 <input type="submit"  value="Gem" class="btn btn-primary">
                 </form>
