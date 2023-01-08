@@ -147,12 +147,13 @@ Upload excel fil
                                 <span class="input-group-text">Din besked</span>
                                 <textarea class="form-control" aria-label="With textarea"></textarea>
                                 </div>
-<div class="input-group">
-  <input type="text" name="sms_datetime" class="form-control" id="id_sms_datetime" data-dp-config="{&quot;id&quot;: &quot;dp_1&quot;, &quot;picker_type&quot;: &quot;DATETIME&quot;, &quot;linked_to&quot;: null, &quot;options&quot;: {&quot;showClose&quot;: true, &quot;showClear&quot;: true, &quot;showTodayButton&quot;: true, &quot;format&quot;: &quot;DD/MM/YYYY HH:mm&quot;}}">
-
-  <div class="input-group-addon input-group-append input-group-text">
-    <i class="glyphicon glyphicon-calendar"></i>
-  </div>
+                    ```` # Datetime picker form-control
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">Dato</span>
+                        <input type="text" class="form-control" id="datetimepicker1" data-target-input="nearest">
+                        <div class="input-group-append" data-target="#datetimepicker1" data-toggle="datetimepicker">
+                            <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                        </div>
 
 
                     <br>
