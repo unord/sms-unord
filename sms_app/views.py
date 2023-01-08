@@ -70,8 +70,14 @@ def import_data(request):
         print(df_excel_file)
         username = request.POST['username']
         inputGroupSelectMobile = letters_to_numbers(str(request.POST['inputGroupSelectMobile']))-1
-        inputGroupSelectFistName = letters_to_numbers(str(request.POST['inputGroupSelectFistName']))-1
-        inputGroupSelectLastName = letters_to_numbers(str(request.POST['inputGroupSelectLastName']))-1
+        try:
+            inputGroupSelectFistName = letters_to_numbers(str(request.POST['inputGroupSelectFistName']))-1
+        except:
+            inputGroupSelectFistName = 99
+        try:
+            inputGroupSelectLastName = letters_to_numbers(str(request.POST['inputGroupSelectLastName']))-1
+        except:
+            inputGroupSelectLastName = 99
 
         df_to_analyze = df_excel_file[[inputGroupSelectMobile]]
         if inputGroupSelectFistName != 99:
