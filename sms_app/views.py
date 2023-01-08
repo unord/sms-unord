@@ -68,6 +68,7 @@ def import_data(request):
         inputGroupSelectMobile = request.POST['inputGroupSelectMobile']
         inputGroupSelectFistName = request.POST['inputGroupSelectFistName']
         inputGroupSelectLastName = request.POST['inputGroupSelectLastName']
+        print(df_excel_file)
 
         mobile_error = []
         row_count = 0
