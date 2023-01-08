@@ -9,7 +9,7 @@ Upload excel fil
     <table class="table table-borderless">
         <tr>
             <td width="60%">
-                <form method="post" enctype="multipart/form-data">
+                <form action="http://10.18.225.150:8001/sms_app/sms_app/ValidateExcel/" method="post" enctype="multipart/form-data">
                     {% csrf_token %}
                     {{ form.errors }}
                     <div class="input-group mb-3">
@@ -165,7 +165,7 @@ Upload excel fil
                                     <label for="formFile" class="form-label">Excel fil der skal uploades</label>
                                     <input class="form-control" type="file" id="formFile">
                                 </div><br>
-                                <input type="submit" action="http://10.18.225.150:8001/sms_app/sms_app/ValidateExcel/" value="Gem" class="btn btn-primary">
+                                <input type="submit"  value="Gem" class="btn btn-primary">
                 </form>
 
             </td>
