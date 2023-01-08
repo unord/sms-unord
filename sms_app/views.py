@@ -69,16 +69,16 @@ def import_data(request):
         df_excel_file = pd.read_excel(file)
         df_excel_file = df_excel_file.rename(columns={i:chr(i+65) for i in range(26)})
         print(df_excel_file)
-        username = request.POST['username']
-        inputGroupSelectMobile = request.POST['inputGroupSelectMobile']
-        inputGroupSelectFistName = request.POST['inputGroupSelectFistName']
-        inputGroupSelectLastName = request.POST['inputGroupSelectLastName']
-        message = request.POST['message']
-        sms_send = request.POST['sms_send']
+        #username = request.POST['username']
+        #inputGroupSelectMobile = request.POST['inputGroupSelectMobile']
+        #inputGroupSelectFistName = request.POST['inputGroupSelectFistName']
+        #inputGroupSelectLastName = request.POST['inputGroupSelectLastName']
+        #message = request.POST['message']
+        #sms_send = request.POST['sms_send']
 
         mobile_error = []
         row_count = 0
-
+'''
         for index, row in df_excel_file.iterrows():
             row_count += 1
             mobile = row[inputGroupSelectMobile]
@@ -97,10 +97,9 @@ def import_data(request):
        #     first_name = row[inputGroupSelectFistName]
        #     last_name = row[inputGroupSelectLastName]
 
+'''
+        #return render(request, 'sms_app/upload_sms_list.html', {'mobile_error': mobile_error})
 
-
-
-    return render(request, 'sms_app/import.html')
 
 def letters_to_numbers(letter: str) -> int:
     if letter.upper() == "A":
