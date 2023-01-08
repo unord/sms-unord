@@ -11,6 +11,9 @@
     let selectElementInputGroupSelectFirstname = document.getElementById('id_inputGroupSelectFistName');
     let selectElementInputGroupSelectLastname = document.getElementById('id_inputGroupSelectLastName');
 
+    let labelElementFirstname = document.getElementById('id_labelFirstName');
+    let labelElementLastname = document.getElementById('id_labelLastName');
+
     // Get submit button
     let submitButton = document.getElementById('id_submitButton');
 
@@ -18,11 +21,13 @@
 
     switchElementInputGroupSelectFirstname.checked = false;
     selectElementInputGroupSelectFirstname.disabled = true;
-    selectElementInputGroupSelectFirstname.hidden = true;
+    selectElementInputGroupSelectFirstname.hidden = true
+    labelElementFirstname.hidden = true;
 
     switchElementInputGroupSelectLastname.checked = false;
     selectElementInputGroupSelectLastname.disabled = true;
     selectElementInputGroupSelectLastname.hidden = true;
+    labelElementLastname.hidden = true;
 
     submitButton.disabled = true;
 
@@ -30,6 +35,7 @@
         if (this.checked) {
             selectElementInputGroupSelectFirstname.disabled = false;
             selectElementInputGroupSelectFirstname.hidden = false;
+            labelElementFirstname.hidden = false;
             if (selectElementInputGroupSelectFirstname.value === '0') {
                 submitButton.disabled = true;
            } else {
@@ -39,6 +45,7 @@
          else {
             selectElementInputGroupSelectFirstname.disabled = true;
             selectElementInputGroupSelectFirstname.hidden = true;
+            labelElementFirstname.hidden = true;
         }
     };
 
@@ -47,6 +54,7 @@
         if (this.checked) {
             selectElementInputGroupSelectLastname.disabled = false;
             selectElementInputGroupSelectLastname.hidden = false;
+            labelElementLastname.hidden = false;
             if (selectElementInputGroupSelectLastname.value === '0') {
                 submitButton.disabled = true;
            } else {
@@ -56,6 +64,7 @@
          else {
             selectElementInputGroupSelectLastname.disabled = true;
             selectElementInputGroupSelectLastname.hidden = true;
+            labelElementLastname.hidden = true;
         }
     };
 
