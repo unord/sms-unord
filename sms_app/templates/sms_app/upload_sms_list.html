@@ -33,8 +33,8 @@ Upload excel fil
 
                                 <div class=" input-group mb-3">
                                     <div class="form-check form-switch">
-                                        <input class="form-check-input" type="checkbox" id="flexSwitchCheckFirstName">
-                                        <label class="form-check-label" for="flexSwitchCheckDefault">Fornavn
+                                        <input class="form-check-input" type="checkbox" id="id_flexSwitchCheckFirstName">
+                                        <label class="form-check-label" for="flexSwitchCheckFirstName">Fornavn
                                             kolonne</label>
                                     </div>
                                 </div>
@@ -42,16 +42,16 @@ Upload excel fil
 
                                 <div class=" input-group mb-3">
                                     <div class="form-check form-switch">
-                                        <input class="form-check-input" type="checkbox" id="flexSwitchCheckLastName">
-                                        <label class="form-check-label" for="flexSwitchCheckDefault">Efternavn
+                                        <input class="form-check-input" type="checkbox" id="id_flexSwitchCheckLastName">
+                                        <label class="form-check-label" for="flexSwitchCheckLastName">Efternavn
                                             kolonne</label>
                                     </div>
                                 </div>
 
 <div class="input-group mb-3">
-  <label class="input-group-text" for="inputGroupSelect01">Mobil nummer</label>
+  <label class="input-group-text" for="id_inputGroupSelectMobile">Mobil nummer</label>
   <select class="form-select" id="id_inputGroupSelectMobile" name="inputGroupSelectMobile" required>
-    <option selected>Angiv Kolonne</option>
+    <option value="0" selected>Angiv Kolonne</option>
     <option value="A">A</option>
     <option value="B">B</option>
     <option value="C">C</option>
@@ -83,7 +83,7 @@ Upload excel fil
                     <div class="input-group mb-3">
   <label class="input-group-text" for="inputGroupSelect01">Fornavn</label>
   <select class="form-select" id="id_inputGroupSelectFistName" name="inputGroupSelectFistName">
-    <option selected>Angiv Kolonne</option>
+    <option value="0" selected>Angiv Kolonne</option>
     <option value="A">A</option>
     <option value="B">B</option>
     <option value="C">C</option>
@@ -115,7 +115,7 @@ Upload excel fil
                     <div class="input-group mb-3">
   <label class="input-group-text" for="inputGroupSelect01">Efternavn</label>
   <select class="form-select" id="id_inputGroupSelectLastName" name="inputGroupSelectLastName">
-    <option selected>Angiv Kolonne</option>
+    <option value="0" selected>Angiv Kolonne</option>
     <option value="A">A</option>
     <option value="B">B</option>
     <option value="C">C</option>
@@ -163,7 +163,7 @@ Upload excel fil
                                     <label for="file" class="form-label">Excel fil der skal uploades- Tager kun imod .xlsx filer</label>
                                     <input class="form-control" type="file" id="file" name="file" accept=".xlsx" required>
                                 </div><br>
-                                <input type="submit"  value="Gem" class="btn btn-primary">
+                                <input type="submit"  value="Gem" class="btn btn-primary" id="id_submitButton">
                 </form>
 
             </td>
@@ -192,5 +192,5 @@ Upload excel fil
     </table>
 
 
-
+{% include 'import_excel_jscript.html' %}
 {% endblock %}
