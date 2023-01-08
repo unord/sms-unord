@@ -20,7 +20,7 @@
     switchElementInputGroupSelectLastname.checked = false;
 
 
-    switchElementInputGroupSelectFirstname.addEventListener('change', function() {
+    switchElementInputGroupSelectFirstname.onchange = function() {
         if (this.checked) {
             selectElementInputGroupSelectFirstname.disabled = false;
             selectElementInputGroupSelectFirstname.hidden = false;
@@ -34,10 +34,10 @@
             selectElementInputGroupSelectFirstname.disabled = true;
             selectElementInputGroupSelectFirstname.hidden = true;
         }
-    });
+    };
 
 
-    switchElementInputGroupSelectLastname.addEventListener('change', function() {
+    switchElementInputGroupSelectLastname.onchange = function() {
         if (this.checked) {
             selectElementInputGroupSelectLastname.disabled = false;
             selectElementInputGroupSelectLastname.hidden = false;
@@ -51,6 +51,6 @@
             selectElementInputGroupSelectLastname.disabled = true;
             selectElementInputGroupSelectLastname.hidden = true;
         }
-    });
+    };
 
 </script>
