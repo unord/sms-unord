@@ -92,10 +92,10 @@ def import_data(request):
                 mobile_error.append(f"Fejl i {request.POST['inputGroupSelectMobile']}{row_count}: {mobile}")
 
 
-        for index, row in df_excel_file.iterrows():
-            mobile = row[inputGroupSelectMobile]
-            first_name = row[inputGroupSelectFistName]
-            last_name = row[inputGroupSelectLastName]
+       # for index, row in df_excel_file.iterrows():
+       #     mobile = row[inputGroupSelectMobile]
+       #     first_name = row[inputGroupSelectFistName]
+       #     last_name = row[inputGroupSelectLastName]
 
 
 
