@@ -36,6 +36,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
+    # third-party-apps
+    'bootstrap_datepicker_plus',
     # my-apps
     'sms_app',
     'pages_app.apps.PagesConfig',
