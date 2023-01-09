@@ -40,7 +40,7 @@ setInterval(function(){
             <tr>
                 <td class="table-danger" width="25%">
                     {% for object in object_list_not_validated %}
-                        {{ object.email|lower }}, (id: {{ object.id }}), <i>(sendes: {{ object.time_to_send|date:'d/m-Y H:i' }})</i>
+                        {{ object.email|remove_email }}, (id: {{ object.id }}), <i>(sendes: {{ object.time_to_send|date:'d/m-Y H:i' }})</i>
                         {% if user.is_authenticated %}
                             <a href="{{ object.get_absolute_url }}" class="badge rounded-pill bg-dark">Detaljer</a>
                         {% endif %}<br/>
@@ -56,7 +56,7 @@ setInterval(function(){
                 </td>
                 <td class="table-info" width="25%">
                     {% for object in object_list_processing %}
-                        {{ object.email|lower }}, (id: {{ object.id }}) <i>(Afslutter: {{ object.time_to_send|date:'d/m-Y H:i' }})
+                        {{ object.email|remove_email }}, (id: {{ object.id }}) <i>(Afslutter: {{ object.time_to_send|date:'d/m-Y H:i' }})
                         {% if user.is_authenticated %}
                             <a href="{{ object.get_absolute_url }}" class="badge rounded-pill bg-dark">Detaljer</a>
                         {% endif %}<br/>
@@ -65,7 +65,7 @@ setInterval(function(){
                 </td>
             <td class="table-success" width="25%">
                     {% for object in object_list_completed %}
-                        {{ object.email|lower }}, (id: {{ object.id }}) <i>(Behandlede: {{ object.time_to_send|date:'d/m-Y H:i' }})
+                        {{ object.email|remove_email }}, (id: {{ object.id }}) <i>(Behandlede: {{ object.time_to_send|date:'d/m-Y H:i' }})
                         {% if user.is_authenticated %}
                             <a href="{{ object.get_absolute_url }}" class="badge rounded-pill bg-dark">Detaljer</a>
                         {% endif %}<br/>
