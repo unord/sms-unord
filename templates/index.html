@@ -7,7 +7,7 @@
     For at få adgang til systemet skal du kontakte Henrik Faaborg på mail hefa£unord.dk.
     </div>
 {% if user.is_authenticated %}
-<div class="m-2"><a class="btn btn-primary" href="{% url 'sms_app_Message_list' %}">Se SMS list</a> <div class="m-2"><a class="btn btn-primary" href="{% url 'sms_app_Message_Dashboard' %}">Se SMS behandlings kø</a></div>
+<div class="m-2"><a class="btn btn-primary" href="{% url 'sms_app_Message_list' %}">Se SMS list</a> <a class="btn btn-primary" href="{% url 'sms_app_Message_Dashboard' %}">Se SMS behandlings kø</a></div>
     {% endif %}
 
 {% endblock %}
