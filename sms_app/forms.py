@@ -7,12 +7,12 @@ from bootstrap_datepicker_plus.widgets import DatePickerInput, TimePickerInput, 
 DATETIME_FORMAT = '%d/%m/%Y %H:%M'
 
 class RecipientForm(forms.ModelForm):
-    mobile_number = forms.CharField(label="Mobilnummer", required=True, max_length=8, widget=forms.Textarea(
-        attrs={'class': 'form-control', 'rows': 5, 'type': 'number'}))
-    first_name = forms.CharField(label="Fornavn", max_length=40, widget=forms.Textarea(
-        attrs={'class': 'form-control', 'rows': 5, }))
-    last_name = forms.CharField(label="Efternavn", max_length=40, widget=forms.Textarea(
-        attrs={'class': 'form-control', 'rows': 5, }))
+    mobile_number = forms.CharField(label="Mobilnummer", required=True, max_length=8, widget=forms.TextInput(
+        attrs={'class': 'form-control',  'type': 'number'}))
+    first_name = forms.CharField(label="Fornavn", max_length=40, widget=forms.TextInput(
+        attrs={'class': 'form-control', }))
+    last_name = forms.CharField(label="Efternavn", max_length=40, widget=forms.TextInput(
+        attrs={'class': 'form-control',  }))
 
     class Meta:
         model = models.Recipient
