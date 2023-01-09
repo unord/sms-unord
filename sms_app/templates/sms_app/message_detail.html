@@ -34,7 +34,7 @@
     <tr><td>last_updated</td><td>{{ object.last_updated }}</td></tr>
     <tr><td>created</td><td>{{ object.created }}</td></tr>
 </table>
-<a class="btn btn-primary" href="{{object.get_update_url}}">Rediger</a>
+<a class="btn btn-primary" href="{{object.get_update_url}}">Rediger</a> <a class="btn btn-danger" href="{% url 'sms_app_Message_delete' object.pk %}">Slet</a>
 <br>
      {% if object_list_recipient_list %}
          <br>
