@@ -22,9 +22,7 @@ class RecipientForm(forms.ModelForm):
             "last_name",
         ]
 
-    def __init__(self, *args, **kwargs):
-        super(RecipientForm, self).__init__(*args, **kwargs)
-        self.fields["message"].queryset = Message.objects.all()
+
 
 
 
@@ -45,8 +43,6 @@ class MessageForm(forms.ModelForm):
             "time_to_send",
         ]
 
-    def __init__(self, *args, **kwargs):
-        super(MessageForm, self).__init__(*args, **kwargs)
 
 
 class UploadEXcelForm(forms.ModelForm):
