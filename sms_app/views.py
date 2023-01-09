@@ -6,8 +6,8 @@ from . import forms
 import pandas as pd
 import random
 import string
-import unord_mail
-import unord_sms
+from . import unord_mail
+from . import unord_sms
 
 
 class MessageListView(generic.ListView):
