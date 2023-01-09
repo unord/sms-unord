@@ -25,6 +25,11 @@ class MessageDetailView(generic.DetailView):
     model = models.Message
     form_class = forms.MessageForm
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['recipient_list'] = models.Recipient.objects.filter(message_id=self.kwargs['pk'])
+        return context
+
 
 class MessageUpdateView(generic.UpdateView):
     model = models.Message
