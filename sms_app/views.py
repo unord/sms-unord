@@ -8,6 +8,7 @@ import random
 import string
 from . import unord_mail
 from . import unord_sms
+import request
 
 
 class MessageListView(generic.ListView):
