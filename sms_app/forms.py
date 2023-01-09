@@ -47,7 +47,7 @@ class MessageForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         super(MessageForm, self).__init__(*args, **kwargs)
-        self.fields["user"].queryset = User.objects.all()
+
 
 class UploadEXcelForm(forms.ModelForm):
     class Meta:
