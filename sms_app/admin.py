@@ -14,14 +14,15 @@ class MessageAdminForm(forms.ModelForm):
 class MessageAdmin(admin.ModelAdmin):
     form = MessageAdminForm
     list_display = [
-        "last_updated",
-        "completed",
-        "message",
+        "user.username",
         "email",
-        "link_code",
         "time_to_send",
-        "created",
+        "message",
+        "link_code",
         "validated_by_email",
+        "completed",
+        "last_updated",
+        "created",
     ]
     readonly_fields = [
 
@@ -38,13 +39,13 @@ class RecipientAdminForm(forms.ModelForm):
 class RecipientAdmin(admin.ModelAdmin):
     form = RecipientAdminForm
     list_display = [
-        "created",
-        "last_name",
         "mobile_number",
+        "first_name",
+        "last_name",
+        "message",
         "sent",
         "last_updated",
-        "first_name",
-        "message",
+        "created",
     ]
     readonly_fields = [
 
