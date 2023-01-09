@@ -15,8 +15,8 @@
     <tr><td>Afsendt</td><td>{% if object.sent %}Ja{% else %}Nej{% endif %}</td></tr>
 
 
-<tr><td>last_updated</td><td>{{ object.last_updated }}</td></tr>
-<tr><td>created</td><td>{{ object.created }}</td></tr>
+<tr><td>Sidst Redigeret</td><td>{{ object.last_updated|date:'d/m-Y H:i' }}</td></tr>
+<tr><td>Oprettede</td><td>{{ object.created|date:'d/m-Y H:i' }}</td></tr>
 </table>
 <a class="btn btn-primary" href="{{object.get_update_url}}">Rediger</a> <a class="btn btn-danger" href="{% url 'sms_app_Recipient_delete' object.pk %}">Slet</a>
 
