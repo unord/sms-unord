@@ -1,20 +1,95 @@
 
 {% extends "base.html" %}
 {% block content %}
+    <div><p>
+    <a class="btn btn-primary" href="{% url 'sms_app_Message_list' %}">SMS liste</a>
+    <a class="btn btn-primary" href="{% url 'sms_app_Message_Dashboard' %}">SMS behdlings status</a>
+</p>
+
 {% for object in object_list %}
-  <div class="m-2">
-    <a href="{{object.get_absolute_url}}">{{object}}</a>
-    <small class="ml-5">
-      <a href="{% url 'sms_app_Message_delete' object.pk %}">
-        (Delete)
-      </a>
-    </small>
-  </div>
+
+      {% if object_list %}
+         <br>
+        <table class="table">
+            <tr class="table-dark">
+
+                  <td>
+                    Id
+                </td>
+                <td>
+                    <center>Bruger login</center>
+                </td>
+                <td>
+                    <center>Validerings email</center>
+                </td>
+<td>
+                    <center>Sendes</center>
+                </td>
+                <td>
+                    <center>Er sendt</center>
+                </td>
+                <td>
+                    <center>Slet</center>
+                </td>
+            </tr>
+             {% for object in object_list %}
+
+
+                            <tr>
+
+
+
+
+                    <td><strong>{{ object.id }}</strong>
+
+                        <small>
+
+
+                        <a href="{{ object.get_absolute_url }}"
+                                               class="badge rounded-pill bg-dark">Detaljer</a>  {% if object.sent != True %}<a href="{{ object.get_update_url }}"
+                                             class="badge rounded-pill bg-dark">Rediger</a>{% endif %} </small>
+
+
+
+
+
+                    </td>
+
+                     <td>
+                    <center>{{ object.user }} </center>
+                </td>
+
+
+                 <td>
+                    <center>{{ object.email }}</center>
+                </td>
+                            <td>
+                    <center>{{ object.time_to_send|date:'d/m-Y H:i'  }}</center>
+                </td>
+
+<td>
+                    <center>
+
+                    {% if object.completed == True %}
+                        <p class="text-success">Ja</p>
+                    {% else %}
+                        <p class="text-danger">Nej</p>
+                    {% endif %}
+                    </center>
+                </td>
+
+                    <td>
+
+                      <center>  {% if object.sent != True %}<a href="{% url 'sms_app_Message_delete' object.pk %}"  class="btn btn-danger btn-sm "
+                                   tabindex="-1" role="button" aria-disabled="true">Slet</a>{% endif %}</center>
+                    </td>
+                </tr>
+
+            {% endfor %}
+        </table>
+    {% endif %}
+
 {% endfor %}
-<div>
-  <a class="btn btn-primary"
-    href="{% url 'sms_app_Message_create' %}">
-  Create a new Message
-  </a>
+
 </div>
 {% endblock %}
