@@ -8,62 +8,6 @@
     </a>
 </p>
 
-<form method="post" enctype="multipart/form-data">
-  {% csrf_token %}
-  {{form.errors}}
-  <div class="form-group row">
-      <label class="col-sm-2 col-form-label" for="email">email: </label>
-      <input class="form-control col-sm-10"
-         id="email" type="text"
-         name="email" value="{{ object.email }}">
-  </div>
-  <div class="form-group row">
-      <label class="col-sm-2 col-form-label" for="created">created: </label>
-      <input class="form-control col-sm-10"
-         id="created" type="datetime-local"
-         name="created" value="{{ object.created }}" disabled>
-  </div>
-  <div class="form-group row">
-      <label class="col-sm-2 col-form-label" for="completed">completed: </label>
-      <input class="form-control col-sm-10"
-         id="completed" type="text"
-         name="completed" value="{{ object.completed }}">
-  </div>
-  <div class="form-group row">
-      <label class="col-sm-2 col-form-label" for="message">message: </label>
-      <input class="form-control col-sm-10"
-         id="message" type="text"
-         name="message" value="{{ object.message }}">
-  </div>
-  <div class="form-group row">
-      <label class="col-sm-2 col-form-label" for="link_code">link_code: </label>
-      <input class="form-control col-sm-10"'
-         id="link_code" type="text"
-         name="link_code" value="{{ object.link_code }}">
-  </div>
-  <div class="form-group row">
-      <label class="col-sm-2 col-form-label" for="last_updated">last_updated: </label>
-      <input class="form-control col-sm-10"
-         id="last_updated" type="datetime-local"
-         name="last_updated" value="{{ object.last_updated }}" disabled>
-  </div>
-  <div class="form-group row">
-      <label class="col-sm-2 col-form-label" for="validated_by_email">validated_by_email: </label>
-      <input class="form-control col-sm-10"'
-         id="validated_by_email" type="text"
-         name="validated_by_email" value="{{ object.validated_by_email }}">
-  </div>
-  <div class="form-group row">
-      <label class="col-sm-2 col-form-label" for="time_to_send">time_to_send: </label>
-      <input class="form-control col-sm-10"'
-         id="time_to_send" type="datetime-local"
-         name="time_to_send" value="{{ object.time_to_send }}">
-  </div>
-  <div class="form-group row">
-      <label class="col-sm-2 col-form-label" for="user">user: </label>
-      {{ form.user }}
-  </div>
-  <input type="submit" value="Save" class="btn btn-primary">
-</form>
+ {{ form.as_p }}
 
 {% endblock %}
