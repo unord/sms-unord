@@ -75,12 +75,12 @@ class MessageListGroupedView(generic.ListView):
         context = super().get_context_data(**kwargs)
         context['object_list_not_validated'] = models.Message.objects.exclude(validated_by_email=True).order_by('time_to_send')
         context['object_list_not_validated_count'] = models.Message.objects.exclude(validated_by_email=True).count()
-        context['object_list_validated'] = models.Message.objects.exclude(validated_by_email=False).exclude(completed=True).exclude(time_to_send__lte=datetime.datetime.now()).order_by('time_to_send')
-        context['object_list_validated_count'] = models.Message.objects.exclude(validated_by_email=False).exclude(completed=True).exclude(time_to_send__lte=datetime.datetime.now()).count()
+        context['object_list_validated'] = models.Message.objects.Filter(validated_by_email=True).exclude(completed=True).exclude(time_to_send__lte=datetime.datetime.now()).order_by('time_to_send')
+        context['object_list_validated_count'] = models.Message.objects.Filter(validated_by_email=True).exclude(completed=True).exclude(time_to_send__lte=datetime.datetime.now()).count()
         context['object_list_processing'] = models.Message.objects.exclude(validated_by_email=False).exclude(completed=True).exclude(time_to_send__gte=datetime.datetime.now()).order_by('time_to_send')
         context['object_list_processing_count'] = models.Message.objects.exclude(validated_by_email=False).exclude(completed=True).exclude(time_to_send__gte=datetime.datetime.now()).count()
-        context['object_list_completed'] = models.Message.objects.exclude(completed=True).order_by('-time_to_send')
-        context['object_list_completed_count'] = models.Message.objects.exclude(completed=True).count()
+        context['object_list_completed'] = models.Message.objects.Filter(completed=True).order_by('-time_to_send')
+        context['object_list_completed_count'] = models.Message.objects.Filter(completed=True).count()
         return context
 
 def import_data(request):
