@@ -27,7 +27,7 @@ class MessageDetailView(generic.DetailView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['recipient_list'] = models.Recipient.objects.filter(message_id=self.kwargs['pk'])
+        context['object_list_recipient_list'] = models.Recipient.objects.filter(message_id=self.kwargs['pk'])
         return context
 
 
