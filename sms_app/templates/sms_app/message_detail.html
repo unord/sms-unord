@@ -36,6 +36,70 @@
 </table>
 <a class="btn btn-primary" href="{{object.get_update_url}}">Rediger</a>
 
-    {{ recipient_list }}
+     {% if object_list %}
+        <table class="table">
+            <tr class="table-dark">
+
+                  <td>
+                    Mobil nr.
+                </td>
+                <td>
+                    <center>Fornavn</center>
+                </td>
+                <td>
+                    <center>Efternavn</center>
+                </td>
+
+                <td>
+                    <center>Slet</center>
+                </td>
+            </tr>
+             {% for object in object_list %}
+
+
+                            <tr>
+
+
+
+
+                    <td><strong>{{ object.mobile_number }}</strong><br/>
+
+                        <small>
+
+
+                        <a href="{{ object.get_absolute_url }}"
+                                               class="badge rounded-pill bg-dark">Detaljer</a> <a href="{{ object.get_update_url }}"
+                                             class="badge rounded-pill bg-dark">Rediger</a> </small>
+
+
+
+
+
+                    </td>
+
+                     <td>
+                    <center>{{ object.first_name }} </center>
+                </td>
+
+
+                 <td>
+                    <center>{{ object.last_name }}</center>
+                </td>
+
+                 <td>
+                    <center>{{ object.eval_sent_state.state }}</center>
+                </td>
+
+
+                    <td>
+
+                        <a href="{% url 'eval_app_class_school_delete' object.pk %}"  class="btn btn-danger btn-sm "
+                                   tabindex="-1" role="button" aria-disabled="true">Slet</a></center>
+                    </td>
+                </tr>
+
+            {% endfor %}
+        </table>
+    {% endif %}
 
 {% endblock %}
