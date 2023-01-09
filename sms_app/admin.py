@@ -14,6 +14,7 @@ class MessageAdminForm(forms.ModelForm):
 class MessageAdmin(admin.ModelAdmin):
     form = MessageAdminForm
     list_display = [
+        "id",
         "user",
         "email",
         "time_to_send",
