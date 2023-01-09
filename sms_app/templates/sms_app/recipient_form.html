@@ -12,6 +12,7 @@
     <form method="post" enctype="multipart/form-data">
   {% csrf_token %}
   {{form.errors}}
+     <script src="//code.jquery.com/jquery.min.js"></script>
 {{ form.media }}
  {{ form.as_p }}
 <input type="submit" value="Gem" class="btn btn-primary">
