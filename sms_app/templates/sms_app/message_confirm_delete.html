@@ -3,9 +3,9 @@
 {% block content %}
 <form method="post">
   {% csrf_token %}
-  <p>Are you sure you want to delete "{{ object }}"?</p>
+  <p>Er dusikker på du vil slette denne sms afsendelse?<br> "{{ object.message|linebreaks }}"?</p>
   <div>
-    <input class="btn btn-danger" value="Delete Message" type="submit">
+    <input class="btn btn-danger" value="Slet beskede" type="submit">
   </div>
 </form>
 {% endblock %}
