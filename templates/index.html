@@ -4,7 +4,7 @@
 
     <div class="m-2">
         Dette er U/NORD SMS systemet. Her kan du uploadet en excel fil med mobilnumre, navne, sms besked og afsendelse tidspunkt, og så vil vi sende SMS til alle mobilnumrene i filen udfra dit ønskede tidspunkt.<br><br>
-    For at få adgang til systemet skal du kontakte Henrik Faaborg på mail hefa£unord.dk.
+    For at få adgang til systemet skal du kontakte Henrik Faaborg på mail hefa@unord.dk.
     </div>
 {% if user.is_authenticated %}
 <div class="m-2"><a class="btn btn-primary" href="{% url 'sms_app_Message_list' %}">Se SMS list</a> <a class="btn btn-primary" href="{% url 'sms_app_Message_Dashboard' %}">Se SMS behandlings kø</a> <a class="btn btn-success" href="{% url 'sms_app_UploadSms_list' %}">Upload excel ark</a></div>
