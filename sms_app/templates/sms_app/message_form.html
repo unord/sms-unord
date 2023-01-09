@@ -7,7 +7,10 @@
     Message Listing
     </a>
 </p>
-
+    <form method="post" enctype="multipart/form-data">
+  {% csrf_token %}
+  {{form.errors}}
+{{ form.media }}
  {{ form.as_p }}
-
+<input type="submit" value="Gem" class="btn btn-primary">
 {% endblock %}
