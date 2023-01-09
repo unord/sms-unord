@@ -1,0 +1,77 @@
+
+{% extends "base.html" %}
+{% block content %}
+<script language="javascript">
+setInterval(function(){
+   window.location.reload(1);
+}, 60000);
+</script>
+    {% if user.is_authenticated %}
+    <div><a class="btn btn-primary" href="{% url 'eval_app_class_school_create' %}">Opret hold</a></div>
+    {% endif %}
+    <h1>Besked liste</h1>
+
+    <br/>
+    {% if messages %}
+
+        {% for message in messages %}
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                {{ message }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        {% endfor %}
+    {% endif %}
+            <table class="table">
+                <tr class="table-dark">
+                    <td>
+                        Er ikke email valideret: {{ object_list_not_validated_count }}
+                    </td>
+                    <td>
+                        Er email valideret og venter på at blive sendt: {{ object_list_not_validated_count }}
+                    </td>
+                    <td>
+                        Er igang med at blive behandlet: {{ object_list_processing_count }}
+                    </td>
+                    <td>
+                        Er afsluttede: {{ object_list_completed_count }}
+                    </td>
+                </tr>
+            <tr>
+                <td class="table-danger" width="25%">
+                    {% for object in object_list_not_validated %}
+                        {{ object.email|lower }}, (id: {{ object.id }}), <i>(sendes: {{ object.time_to_send|date:'d/m-Y H:i' }})</i>
+                        {% if user.is_authenticated %}
+                            <a href="{{ object.get_absolute_url }}" class="badge rounded-pill bg-dark">Detaljer</a>
+                        {% endif %}<br/>
+                    {% endfor %}
+                </td>
+                <td class="table-warning" width="25%">
+                    {% for object in object_list_validated %}
+                        {{ object.email|lower }}, (id: {{ object.id }}) <i>(sendes: {{ object.eval_open_datetime|date:'d/m-Y H:i' }})</i>
+                        {% if user.is_authenticated %}
+                            <a href="{{ object.get_absolute_url }}" class="badge rounded-pill bg-dark">Detaljer</a>
+                        {% endif %}<br/>
+                    {% endfor %}
+                </td>
+                <td class="table-info" width="25%">
+                    {% for object in object_list_processing %}
+                        {{ object.email|lower }}, (id: {{ object.id }}) <i>(Afslutter: {{ object.time_to_send|date:'d/m-Y H:i' }})
+                        {% if user.is_authenticated %}
+                            <a href="{{ object.get_absolute_url }}" class="badge rounded-pill bg-dark">Detaljer</a>
+                        {% endif %}<br/>
+                    {% endfor %}
+
+                </td>
+            <td class="table-success" width="25%">
+                    {% for object in object_list_completed %}
+                        {{ object.email|lower }}, (id: {{ object.id }}) <i>(Behandlede: {{ object.time_to_send|date:'d/m-Y H:i' }})
+                        {% if user.is_authenticated %}
+                            <a href="{{ object.get_absolute_url }}" class="badge rounded-pill bg-dark">Detaljer</a>
+                        {% endif %}<br/>
+                    {% endfor %}
+
+                </td>
+            </tr>
+            </table>
+
+{% endblock %}

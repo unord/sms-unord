@@ -8,6 +8,7 @@ import random
 import string
 from . import unord_mail
 from . import unord_sms
+import datetime
 
 
 class MessageListView(generic.ListView):
@@ -64,6 +65,23 @@ class RecipientDeleteView(generic.DeleteView):
 class UploadSmsListView(generic.TemplateView):
     template_name = "sms_app/upload_sms_list.html"
 
+
+class MessageListGroupedView(generic.ListView):
+    model = models.Message
+    form_class = forms.MessageForm
+    template_name = "sms_app/message_group_list.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['object_list_not_validated'] = models.Message.objects.exclude(validated_by_email=True).order_by('time_to_send')
+        context['object_list_not_validated_count'] = models.Message.objects.exclude(validated_by_email=True).count()
+        context['object_list_validated'] = models.Message.objects.exclude(validated_by_email=False).exclude(completed=True).exclude(time_to_send__lte=datetime.datetime.now()).order_by('time_to_send')
+        context['object_list_validated_count'] = models.Message.objects.exclude(validated_by_email=False).exclude(completed=True).exclude(time_to_send__lte=datetime.datetime.now()).count()
+        context['object_list_processing'] = models.Message.objects.exclude(validated_by_email=False).exclude(completed=True).exclude(time_to_send__gte=datetime.datetime.now()).order_by('time_to_send')
+        context['object_list_processing_count'] = models.Message.objects.exclude(validated_by_email=False).exclude(completed=True).exclude(time_to_send__gte=datetime.datetime.now()).count()
+        context['object_list_completed'] = models.Message.objects.exclude(completed=True).order_by('-time_to_send')
+        context['object_list_completed_count'] = models.Message.objects.exclude(completed=True).count()
+        return context
 
 def import_data(request):
     if request.method == 'POST':

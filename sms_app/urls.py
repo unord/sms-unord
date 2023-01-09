@@ -12,6 +12,7 @@ router.register("Recipient", api.RecipientViewSet)
 urlpatterns = (
     path("api/v1/", include(router.urls)),
     path("sms_app/Message/", views.MessageListView.as_view(), name="sms_app_Message_list"),
+    path("sms_app/Message/Dashboard/", views.MessageListGroupedView.as_view(), name="sms_app_Message_Dashboard"),
     path("sms_app/Message/create/", views.MessageCreateView.as_view(), name="sms_app_Message_create"),
     path("sms_app/Message/detail/<int:pk>/", views.MessageDetailView.as_view(), name="sms_app_Message_detail"),
     path("sms_app/Message/update/<int:pk>/", views.MessageUpdateView.as_view(), name="sms_app_Message_update"),
