@@ -10,7 +10,11 @@ Fejl i upload af excel fil
         Der er sket en fejl i upload af excel filen. Ret nedenstående fejl og prøv igen.<br>
         <a href="{% url 'sms_app_UploadSms_list' %}">Tilbage til upload</a>
     </p>
-    <p>{{ mobile_error }}</p>
+    <p class="text-danger">{% for msg in mobile_error %}
+    {{ msg }}<br>
+    {% endfor %}</p>
+
+
 
     </div>
 
