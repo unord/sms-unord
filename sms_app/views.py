@@ -97,7 +97,7 @@ def import_data(request):
         else:
             df_to_analyze[2] = ""
 
-        df_to_analyze.rename(columns={1: 'mobile', 2: 'first_name', 3: 'last_name'}, inplace = True)
+        df_to_analyze.rename(columns={0: 'mobile', 1: 'first_name', 2: 'last_name'}, inplace = True)
 
         mobile_error = []
         row_count = 0
