@@ -4,7 +4,7 @@
 <form method="post">
   {% csrf_token %}
   <p>Er dusikker på du vil slette denne sms afsendelse?<br></p>
-    <p class="text-success">{{ object.message|linebreaks }}</p>
+    <p class="text-success"><strong>{{ object.message|linebreaks }}</strong></p>
   <div>
     <input class="btn btn-danger" value="Slet beskede" type="submit">
   </div>
