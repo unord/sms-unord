@@ -1,16 +1,13 @@
 {% extends "base.html" %}
 {% block content %}
 <div class="m-2"><h4>U/NORD SMS system</h4></div>
-    {% if user.is_authenticated %}
+
     <div class="m-2">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-        dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-        ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-        fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
-        mollit anim id est laborum.
+        Dette er U/NORD SMS systemet. Her kan du uploadet en excel fil med mobilnumre, navne, sms besked og afsendelse tidspunkt, og så vil vi sende SMS til alle mobilnumrene i filen udfra dit ønskede tidspunkt.<br>
+    For at få adgang til systemet skal du kontakte Henrik Faaborg på mail hefa£unord.dk.
     </div>
-<div class="m-2"><a class="btn btn-info" href="{% url 'sms_app_Message_list' %}">Se SMS kø</a></div>
+{% if user.is_authenticated %}
+<div class="m-2"><a class="btn btn-primary" href="{% url 'sms_app_Message_list' %}">Se SMS list</a> <div class="m-2"><a class="btn btn-primary" href="{% url 'sms_app_Message_Dashboard' %}">Se SMS behandlings kø</a></div>
     {% endif %}
 
-    <!--- <div class="m-2"><a class="btn btn-light" href="{% url 'sms_app_Recipient_list' %}">Recipient Listing</a></div> --->
 {% endblock %}
