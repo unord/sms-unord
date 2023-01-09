@@ -4,19 +4,34 @@
 {% block content %}
     
 <p>
-    <a class="btn btn-light" href="{% url 'sms_app_Message_list' %}">
-    Message Listing
-    </a>
+    <a class="btn btn-info" href="{% url 'sms_app_Message_list' %}">SMS liste</a>
+    <a class="btn btn-info" href="{% url 'sms_app_Message_Dashboard' %}">SMS behdlings status</a>
 </p>
     
 <table class="table">
-    <tr><td>link_code</td><td>{{ object.link_code }}</td></tr>
-    <tr><td>time_to_send</td><td>{{ object.time_to_send }}</td></tr>
+    <tr><td>SMS id: </td><td>{{ object.id }}</td></tr>
+    <tr><td>Login bruger: </td><td>{{ object.user }}</td></tr>
+    <tr><td>Email: </td><td>{{ object.email }}</td></tr>
+    <tr><td>Email valideret: </td>
+        <td>
+            {% if object.email_validated %}
+                <span class="glyphicon glyphicon-ok"></span>
+            {% else %}
+                <span class="glyphicon glyphicon-remove"></span>
+            {% endif %}
+        </td></tr>
+    <tr><td>Tidspunkt den skal sendes</td><td>{{ object.time_to_send|date:'d/m-Y H:i' }}</td></tr>
+    <tr><td>Besked der skal sendes:</td><td>{{ object.message }}</td></tr>
+    <tr><td>Er sms'erne afsendt</td><td>
+            {% if object.sent %}
+                <span class="glyphicon glyphicon-ok"></span>
+            {% else %}
+                <span class="glyphicon glyphicon-remove"></span>
+            {% endif %}
+        </td></tr>
+    </td></tr>
     <tr><td>last_updated</td><td>{{ object.last_updated }}</td></tr>
-    <tr><td>completed</td><td>{{ object.completed }}</td></tr>
-    <tr><td>message</td><td>{{ object.message }}</td></tr>
     <tr><td>created</td><td>{{ object.created }}</td></tr>
-    <tr><td>user</td><td>{{ object.user }}</td></tr>
 </table>
 <a class="btn btn-primary" href="{{object.get_update_url}}">Edit</a>
 
