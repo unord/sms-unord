@@ -1,42 +1,53 @@
 from django import forms
-from django.contrib.auth.models import User
 from sms_app.models import Message
+from django.contrib.auth.models import User
 from . import models
+from bootstrap_datepicker_plus.widgets import DatePickerInput, TimePickerInput, DateTimePickerInput, MonthPickerInput, YearPickerInput
 
-
-class MessageForm(forms.ModelForm):
-    class Meta:
-        model = models.Message
-        fields = [
-            "link_code",
-            "time_to_send",
-            "completed",
-            "message",
-            "user",
-            "validated_by_email",
-            "user",
-        ]
-
-    def __init__(self, *args, **kwargs):
-        super(MessageForm, self).__init__(*args, **kwargs)
-        self.fields["user"].queryset = User.objects.all()
-
-
+DATETIME_FORMAT = '%d/%m/%Y %H:%M'
 
 class RecipientForm(forms.ModelForm):
+    mobile_number = forms.CharField(label="Mobilnummer", required=True, max_length=8, widget=forms.Textarea(
+        attrs={'class': 'form-control', 'rows': 5, 'type': 'number'}))
+    first_name = forms.CharField(label="Fornavn", max_length=40, widget=forms.Textarea(
+        attrs={'class': 'form-control', 'rows': 5, }))
+    last_name = forms.CharField(label="Efternavn", max_length=40, widget=forms.Textarea(
+        attrs={'class': 'form-control', 'rows': 5, }))
+
     class Meta:
         model = models.Recipient
         fields = [
             "mobile_number",
             "first_name",
-            "sent",
             "last_name",
-            "message",
         ]
 
     def __init__(self, *args, **kwargs):
         super(RecipientForm, self).__init__(*args, **kwargs)
         self.fields["message"].queryset = Message.objects.all()
+
+
+
+class MessageForm(forms.ModelForm):
+    email = forms.EmailField(label="Email", required=True, max_length=30, widget=forms.EmailInput(
+        attrs={'class': 'form-control', }))
+    message = forms.CharField(label="Sms besked", required=True, max_length=600, widget=forms.Textarea(
+        attrs={'class': 'form-control', 'rows': 5, }))
+    time_to_send = forms.DateTimeField(input_formats=[DATETIME_FORMAT],
+                                             widget=DateTimePickerInput(format=DATETIME_FORMAT),
+                                             label="Hvornår skal smserne sendes", required=True, )
+
+    class Meta:
+        model = models.Message
+        fields = [
+            "email",
+            "message",
+            "time_to_send",
+        ]
+
+    def __init__(self, *args, **kwargs):
+        super(MessageForm, self).__init__(*args, **kwargs)
+        self.fields["user"].queryset = User.objects.all()
 
 class UploadEXcelForm(forms.ModelForm):
     class Meta:
