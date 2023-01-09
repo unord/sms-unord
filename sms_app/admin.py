@@ -14,39 +14,22 @@ class MessageAdminForm(forms.ModelForm):
 class MessageAdmin(admin.ModelAdmin):
     form = MessageAdminForm
     list_display = [
-        "link_code",
-        "time_to_send",
         "last_updated",
         "completed",
         "message",
+        "email",
+        "link_code",
+        "time_to_send",
         "created",
+        "validated_by_email",
     ]
     readonly_fields = [
-
-    ]
-
-
-class RecipientAdminForm(forms.ModelForm):
-
-    class Meta:
-        model = models.Recipient
-        fields = "__all__"
-
-
-class RecipientAdmin(admin.ModelAdmin):
-    form = RecipientAdminForm
-    list_display = [
-        "mobile_number",
         "last_updated",
-        "first_name",
+        "completed",
+        "message",
+        "email",
+        "link_code",
+        "time_to_send",
         "created",
-        "sent",
-        "last_name",
+        "validated_by_email",
     ]
-    readonly_fields = [
-
-    ]
-
-
-admin.site.register(models.Message, MessageAdmin)
-admin.site.register(models.Recipient, RecipientAdmin)

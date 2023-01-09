@@ -21,10 +21,12 @@ def tests_Message_create_view(client):
     user = test_helpers.create_User()
     url = reverse("sms_app_Message_create")
     data = {
-        "link_code": "text",
-        "time_to_send": datetime.now(),
         "completed": true,
         "message": "text",
+        "email": "user@tempurl.com",
+        "link_code": "text",
+        "time_to_send": datetime.now(),
+        "validated_by_email": true,
         "user": user.pk,
     }
     response = client.post(url, data)
@@ -44,10 +46,12 @@ def tests_Message_update_view(client):
     instance = test_helpers.create_sms_app_Message()
     url = reverse("sms_app_Message_update", args=[instance.pk, ])
     data = {
-        "link_code": "text",
-        "time_to_send": datetime.now(),
         "completed": true,
         "message": "text",
+        "email": "user@tempurl.com",
+        "link_code": "text",
+        "time_to_send": datetime.now(),
+        "validated_by_email": true,
         "user": user.pk,
     }
     response = client.post(url, data)
@@ -68,10 +72,10 @@ def tests_Recipient_create_view(client):
     message = test_helpers.create_sms_app_Message()
     url = reverse("sms_app_Recipient_create")
     data = {
-        "mobile_number": "text",
-        "first_name": "text",
-        "sent": true,
         "last_name": "text",
+        "mobile_number": "text",
+        "sent": true,
+        "first_name": "text",
         "message": message.pk,
     }
     response = client.post(url, data)
@@ -91,10 +95,10 @@ def tests_Recipient_update_view(client):
     instance = test_helpers.create_sms_app_Recipient()
     url = reverse("sms_app_Recipient_update", args=[instance.pk, ])
     data = {
-        "mobile_number": "text",
-        "first_name": "text",
-        "sent": true,
         "last_name": "text",
+        "mobile_number": "text",
+        "sent": true,
+        "first_name": "text",
         "message": message.pk,
     }
     response = client.post(url, data)

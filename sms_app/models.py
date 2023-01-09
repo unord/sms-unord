@@ -13,7 +13,9 @@ class Message(models.Model):
     last_updated = models.DateTimeField(auto_now=True, editable=False)
     completed = models.BooleanField(null=True, blank=True)
     message = models.TextField(max_length=600)
+    email = models.EmailField(null=True, blank=True)
     created = models.DateTimeField(auto_now_add=True, editable=False)
+    validated_by_email = models.BooleanField(null=True, blank=True)
 
     class Meta:
         pass

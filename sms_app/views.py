@@ -4,6 +4,10 @@ from django.urls import reverse_lazy
 from . import models
 from . import forms
 import pandas as pd
+import random
+import string
+import unord_mail
+import unord_sms
 
 
 class MessageListView(generic.ListView):
@@ -62,13 +66,16 @@ class UploadSmsListView(generic.TemplateView):
 
 
 def import_data(request):
-    print("pre-post")
     if request.method == 'POST':
-        print("post")
         file = request.FILES['file']
         df_excel_file = pd.read_excel(file, header=None)
-        print(df_excel_file)
-        username = request.POST['username']
+        email = request.POST['username']+'@unord.dk'
+        message = request.POST['message']
+        time_to_send = request.POST['sms_send']
+        link_code = generate_random_string(16)
+        user = request.user
+
+
         inputGroupSelectMobile = letters_to_numbers(str(request.POST['inputGroupSelectMobile']))-1
         try:
             inputGroupSelectFistName = letters_to_numbers(str(request.POST['inputGroupSelectFistName']))-1
@@ -79,7 +86,7 @@ def import_data(request):
         except:
             inputGroupSelectLastName = 99
 
-        df_to_analyze = df_excel_file[[inputGroupSelectMobile]]
+        df_to_analyze = df_excel_file[[inputGroupSelectMobile]].astype('string')
         if inputGroupSelectFistName != 99:
             df_to_analyze[1] = df_excel_file[inputGroupSelectFistName]
         else:
@@ -90,37 +97,48 @@ def import_data(request):
         else:
             df_to_analyze[2] = ""
 
-
-
-        print(df_to_analyze)
-
-        #message = request.POST['message']
-        #sms_send = request.POST['sms_send']
+        df_to_analyze.rename(columns={1: 'mobile', 2: 'first_name', 3: 'last_name'}, inplace = True)
 
         mobile_error = []
         row_count = 0
-'''
-        for index, row in df_excel_file.iterrows():
+        # loop through df_to_analyze['mobile'] and check if string only contains numbers
+        for index, row in df_to_analyze.iterrows():
             row_count += 1
-            mobile = row[inputGroupSelectMobile]
-            mobile = str(mobile)
-            mobile = mobile.replace(" ", "")
-            mobile = mobile.replace("-", "")
-            mobile = mobile.replace("(", "")
-            mobile = mobile.replace(")", "")
-            mobile = mobile.replace("+45", "")
-            if len(mobile) != 8:
-                mobile_error.append(f"Fejl i {request.POST['inputGroupSelectMobile']}{row_count}: {mobile}")
+            org_value = row['mobile']
+            row['mobile'] = row['mobile'].replace(" ", "")
+            row['mobile'] = row['mobile'].replace("-", "")
+            row['mobile'] = row['mobile'].replace("(", "")
+            row['mobile'] = row['mobile'].replace(")", "")
+            row['mobile'] = row['mobile'].replace("+45", "")
+
+            if not row['mobile'].isnumeric():
+                mobile_error.append(f"Fejl i telefon nummer række:{request.POST['inputGroupSelectMobile']}{row_count}. Værdi: {org_value}")
+
+        if len(mobile_error) > 0:
+            return render(request, 'sms_app/upload_sms_list_error.html', {'mobile_error': mobile_error})
+
+        #add record to model Message and add df_to_analyze to model Recipient that belongs to Message
+        message = models.Message.objects.create(email=email, message=message, link_code=link_code, time_to_send=time_to_send, user=user)
+
+        #loop through df_to_analyze and add each row to model Recipient matching the Message
+        for index, row in df_to_analyze.iterrows():
+            models.Recipient.objects.create(message=message, mobile_number=row['mobile'], first_name=row['first_name'], last_name=row['last_name'])
+
+        email_from = 'helpdesk@unord.dk'
+        recipient_list = [email,]
+        email_subject = 'SMS liste upload skal godkendes'
+        email_body= f"Vi har modtaget en sms liste fra {email} med link: https://sms.unord.dk/sms_app/recipient_list/{link_code}/"
+        unord_mail.send_email_with_attachments(email_from, recipient_list, email_subject, email_body, [], [], [])
+
+        return render(request, 'sms_app/upload_sms_list_success.html', {'message': message})
 
 
-       # for index, row in df_excel_file.iterrows():
-       #     mobile = row[inputGroupSelectMobile]
-       #     first_name = row[inputGroupSelectFistName]
-       #     last_name = row[inputGroupSelectLastName]
+def generate_random_string(n):
+  # Get a random selection of letters and digits
+  choices = string.ascii_letters + string.digits
 
-'''
-        #return render(request, 'sms_app/upload_sms_list.html', {'mobile_error': mobile_error})
-
+  # Use ''.join() to convert the sequence of characters to a string
+  return ''.join(random.choices(choices, k=n))
 
 def letters_to_numbers(letter: str) -> int:
     if letter == "99":

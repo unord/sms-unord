@@ -1,8 +1,3 @@
-import random
-import string
-
-from django.contrib.auth.models import User
-from django.contrib.auth.models import AbstractUser
 from django.contrib.auth.models import AbstractBaseUser
 from django.contrib.auth.models import Group
 from django.contrib.contenttypes.models import ContentType
@@ -61,20 +56,22 @@ def create_ContentType(**kwargs):
 
 def create_sms_app_Message(**kwargs):
     defaults = {}
-    defaults["link_code"] = ""
-    defaults["time_to_send"] = datetime.now()
     defaults["completed"] = ""
     defaults["message"] = ""
+    defaults["email"] = ""
+    defaults["link_code"] = ""
+    defaults["time_to_send"] = datetime.now()
+    defaults["validated_by_email"] = ""
     if "user" not in kwargs:
         defaults["user"] = create_User()
     defaults.update(**kwargs)
     return sms_app_models.Message.objects.create(**defaults)
 def create_sms_app_Recipient(**kwargs):
     defaults = {}
-    defaults["mobile_number"] = ""
-    defaults["first_name"] = ""
-    defaults["sent"] = ""
     defaults["last_name"] = ""
+    defaults["mobile_number"] = ""
+    defaults["sent"] = ""
+    defaults["first_name"] = ""
     if "message" not in kwargs:
         defaults["message"] = create_sms_app_Message()
     defaults.update(**kwargs)

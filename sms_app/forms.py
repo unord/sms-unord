@@ -13,6 +13,8 @@ class MessageForm(forms.ModelForm):
             "completed",
             "message",
             "user",
+            "validated_by_email",
+            "user",
         ]
 
     def __init__(self, *args, **kwargs):

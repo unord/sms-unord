@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<div>
+    <h1>
+Fejl i upload af excel fil
+</h1>
+
+    <p>
+        Der er sket en fejl i upload af excel filen. Ret nedenstående fejl og prøv igen.<br>
+        <a href="{% url 'upload' %}">Tilbage til upload</a>
+    </p>
+    <p>{{ mobile_error }}</p>
+
+    </div>
+
+
+{% endblock %}
