@@ -4,9 +4,8 @@
 {% block content %}
     
 <p>
-    <a class="btn btn-light" href="{% url 'sms_app_Recipient_list' %}">
-    Recipient Listing
-    </a>
+    <div class="m-2"><a class="btn btn-primary" href="{% url 'sms_app_Message_list' %}">Se SMS list</a> <a class="btn btn-primary" href="{% url 'sms_app_Message_Dashboard' %}">Se SMS behandlings kø</a> <a class="btn btn-success" href="{% url 'sms_app_UploadSms_list' %}">Upload excel ark</a></div>
+
 </p>
     
     <form method="post" enctype="multipart/form-data">
