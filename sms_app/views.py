@@ -106,7 +106,7 @@ def approve_sms(request, link_code):
     message = models.Message.objects.get(link_code=link_code)
     message.validated_by_email = True
     message.save()
-    object_list_recipient_list = models.Recipient.objects.filter(message_id=self.kwargs['pk'])
+    object_list_recipient_list = models.Recipient.objects.filter(message_id=message.id)
     return render(request, 'sms_app/message_detail.html', {'object': message, 'object_list_recipient_list': object_list_recipient_list})
 
 def reject_sms(request, link_code):
