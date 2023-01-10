@@ -24,6 +24,9 @@ urlpatterns = (
     path("sms_app/Recipient/delete/<int:pk>/", views.RecipientDeleteView.as_view(), name="sms_app_Recipient_delete"),
     path("sms_app/UploadSms/", views.UploadSmsListView.as_view(), name="sms_app_UploadSms_list"),
     path("sms_app/ValidateExcel/", views.import_data, name="sms_app_import_data"),
+    path('sms_app/approve_sms/<str:link_code>', views.approve_sms, name='approve_sms'),
+    path('sms_app/reject_sms/<str:link_code>', views.reject_sms, name='reject_sms'),
+    path('sms_app/Message/detail/<str:link_code>', views.MessageDetailApprovedView.as_view(), name="sms_app_Message_approved_detail"),
 
 
 )

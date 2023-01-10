@@ -32,6 +32,14 @@ class MessageDetailView(generic.DetailView):
         context['object_list_recipient_list'] = models.Recipient.objects.filter(message_id=self.kwargs['pk'])
         return context
 
+class MessageDetailApprovedView(generic.DetailView):
+    model = models.Message
+    form_class = forms.MessageForm
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['object_list_recipient_list'] = models.Recipient.objects.filter(message_id=self.kwargs['pk'])
+        return context
 
 class MessageUpdateView(generic.UpdateView):
     translation.activate('da')
@@ -92,6 +100,22 @@ class MessageListGroupedView(generic.ListView):
         context['object_list_completed'] = models.Message.objects.filter(completed=True).order_by('-time_to_send')
         context['object_list_completed_count'] = models.Message.objects.filter(completed=True).count()
         return context
+
+
+def approve_sms(request, link_code):
+    message = models.Message.objects.get(link_code=link_code)
+    message.validated_by_email = True
+    message.save()
+    return render(request, 'sms_app/message_detail.html', {'message': message})
+
+def reject_sms(request, link_code):
+    try:
+        message = models.Message.objects.get(link_code=link_code)
+        message.delete()
+    except:
+        message = []
+    return render(request, 'sms_app/sms_deleted.html', {'message': message})
+
 
 def import_data(request):
     if request.method == 'POST':
@@ -156,7 +180,22 @@ def import_data(request):
         email_from = 'helpdesk@unord.dk'
         recipient_list = [email,]
         email_subject = 'SMS liste upload skal godkendes'
-        email_body= f"Vi har modtaget en sms liste fra {email} med link: https://sms.unord.dk/sms_app/recipient_list/{link_code}/"
+        email_body= f'''
+        Hej {email.replace('@unord.dk', '').upper()}
+        
+        Vi har modtaget en sms liste der skulle have været oprettede af dig.
+         
+         Hvis du har oprettet listen, så skal du godkende den ved at klikke på linket herunder.
+         https://sms.unord.dk/sms_app/approve_sms/{link_code}
+         
+        Hvis du ikke har oprettet listen, så skal du slette den ved at klikke på linket herunder.
+        https://sms.unord.dk/sms_app/delete_sms/{link_code}
+         
+        med venlig hilsen
+        
+        helpdesk@unord.dk
+         
+         '''
         unord_mail.send_email_with_attachments(email_from, recipient_list, email_subject, email_body, [], [], [])
 
         return render(request, 'sms_app/upload_sms_list_success.html', {'message': message})
