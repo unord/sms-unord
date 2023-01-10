@@ -177,7 +177,7 @@ def import_data(request):
         for index, row in df_to_analyze.iterrows():
             models.Recipient.objects.create(message=message, mobile_number=row['mobile'], first_name=row['first_name'], last_name=row['last_name'])
 
-        email_from = 'helpdesk@unord.dk'
+        email_from = 'ubot@unord.dk'
         recipient_list = [email,]
         email_subject = 'SMS liste upload skal godkendes'
         email_body= f'''
