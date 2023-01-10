@@ -10,13 +10,15 @@ from . import unord_mail
 from . import unord_sms
 import datetime
 from django.utils import translation
+from django.contrib.auth.decorators import login_required
+from django.utils.decorators import method_decorator
 
-
+@method_decorator(login_required, name='dispatch')
 class MessageListView(generic.ListView):
     model = models.Message
     form_class = forms.MessageForm
 
-
+@method_decorator(login_required, name='dispatch')
 class MessageCreateView(generic.CreateView):
     translation.activate('da')
     model = models.Message
@@ -32,6 +34,7 @@ class MessageDetailView(generic.DetailView):
         context['object_list_recipient_list'] = models.Recipient.objects.filter(message_id=self.kwargs['pk'])
         return context
 
+@method_decorator(login_required, name='dispatch')
 class MessageDetailApprovedView(generic.DetailView):
     model = models.Message
     form_class = forms.MessageForm
@@ -41,49 +44,51 @@ class MessageDetailApprovedView(generic.DetailView):
         context['object_list_recipient_list'] = models.Recipient.objects.filter(message_id=self.kwargs['pk'])
         return context
 
+@method_decorator(login_required, name='dispatch')
 class MessageUpdateView(generic.UpdateView):
     translation.activate('da')
     model = models.Message
     form_class = forms.MessageForm
     pk_url_kwarg = "pk"
 
-
+@method_decorator(login_required, name='dispatch')
 class MessageDeleteView(generic.DeleteView):
     model = models.Message
     success_url = reverse_lazy("sms_app_Message_Dashboard")
 
-
+@method_decorator(login_required, name='dispatch')
 class RecipientListView(generic.ListView):
     model = models.Recipient
     form_class = forms.RecipientForm
 
-
+@method_decorator(login_required, name='dispatch')
 class RecipientCreateView(generic.CreateView):
     translation.activate('da')
     model = models.Recipient
     form_class = forms.RecipientForm
 
-
+@method_decorator(login_required, name='dispatch')
 class RecipientDetailView(generic.DetailView):
     model = models.Recipient
     form_class = forms.RecipientForm
 
-
+@method_decorator(login_required, name='dispatch')
 class RecipientUpdateView(generic.UpdateView):
     translation.activate('da')
     model = models.Recipient
     form_class = forms.RecipientForm
     pk_url_kwarg = "pk"
 
-
+@method_decorator(login_required, name='dispatch')
 class RecipientDeleteView(generic.DeleteView):
     model = models.Recipient
     success_url = reverse_lazy("sms_app_Message_Dashboard")
 
+@method_decorator(login_required, name='dispatch')
 class UploadSmsListView(generic.TemplateView):
     template_name = "sms_app/upload_sms_list.html"
 
-
+@method_decorator(login_required, name='dispatch')
 class MessageListGroupedView(generic.ListView):
     model = models.Message
     form_class = forms.MessageForm
@@ -118,6 +123,7 @@ def reject_sms(request, link_code):
     return render(request, 'sms_app/sms_deleted.html', {'object': message})
 
 
+@method_decorator(login_required, name='dispatch')
 def import_data(request):
     if request.method == 'POST':
         file = request.FILES['file']
