@@ -9,6 +9,7 @@ import string
 from . import unord_mail
 from . import unord_sms
 import datetime
+from django.utils import translation
 
 
 class MessageListView(generic.ListView):
@@ -17,6 +18,7 @@ class MessageListView(generic.ListView):
 
 
 class MessageCreateView(generic.CreateView):
+    translation.activate('da')
     model = models.Message
     form_class = forms.MessageForm
 
@@ -32,6 +34,7 @@ class MessageDetailView(generic.DetailView):
 
 
 class MessageUpdateView(generic.UpdateView):
+    translation.activate('da')
     model = models.Message
     form_class = forms.MessageForm
     pk_url_kwarg = "pk"
@@ -48,6 +51,7 @@ class RecipientListView(generic.ListView):
 
 
 class RecipientCreateView(generic.CreateView):
+    translation.activate('da')
     model = models.Recipient
     form_class = forms.RecipientForm
 
@@ -58,6 +62,7 @@ class RecipientDetailView(generic.DetailView):
 
 
 class RecipientUpdateView(generic.UpdateView):
+    translation.activate('da')
     model = models.Recipient
     form_class = forms.RecipientForm
     pk_url_kwarg = "pk"
