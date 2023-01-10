@@ -8,11 +8,11 @@ from django.utils.translation import gettext_lazy as _
 DATETIME_FORMAT = '%d/%m/%Y %H:%M'
 
 class RecipientForm(forms.ModelForm):
-    mobile_number = forms.CharField(label="Mobilnummer", required=True, max_length=8, widget=forms.TextInput(
+    mobile_number = forms.CharField(label=_("Mobilnummer"), required=True, max_length=8, widget=forms.TextInput(
         attrs={'class': 'form-control',  'type': 'number'}))
-    first_name = forms.CharField(label="Fornavn", max_length=40, widget=forms.TextInput(
+    first_name = forms.CharField(label=_("Fornavn"), max_length=40, widget=forms.TextInput(
         attrs={'class': 'form-control', }))
-    last_name = forms.CharField(label="Efternavn", max_length=40, widget=forms.TextInput(
+    last_name = forms.CharField(label=_("Efternavn"), max_length=40, widget=forms.TextInput(
         attrs={'class': 'form-control',  }))
 
     class Meta:
@@ -28,13 +28,13 @@ class RecipientForm(forms.ModelForm):
 
 
 class MessageForm(forms.ModelForm):
-    email = forms.EmailField(label="Email", required=True, max_length=30, widget=forms.EmailInput(
+    email = forms.EmailField(label=_("Email"), required=True, max_length=30, widget=forms.EmailInput(
         attrs={'class': 'form-control', }))
-    message = forms.CharField(label="Sms besked", required=True, max_length=600, widget=forms.Textarea(
+    message = forms.CharField(label=_("Sms besked"), required=True, max_length=600, widget=forms.Textarea(
         attrs={'class': 'form-control', 'rows': 5, }))
     time_to_send = forms.DateTimeField(input_formats=[DATETIME_FORMAT],
                                              widget=DateTimePickerInput(format=DATETIME_FORMAT),
-                                             label="Hvornår skal smserne sendes", required=True, )
+                                             label=_("Hvornår skal smserne sendes"), required=True, )
 
     class Meta:
         model = models.Message
