@@ -106,7 +106,7 @@ def approve_sms(request, link_code):
     message = models.Message.objects.get(link_code=link_code)
     message.validated_by_email = True
     message.save()
-    return render(request, 'sms_app/message_detail.html', {'message': message})
+    return render(request, 'sms_app/message_detail.html', {'object': message})
 
 def reject_sms(request, link_code):
     try:
