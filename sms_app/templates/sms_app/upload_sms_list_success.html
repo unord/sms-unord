@@ -3,11 +3,11 @@
 {% block content %}
 <div>
     <h1>
-UIpload gennemført
+Upload gennemført
 </h1>
 
 
-    <p>{{ message }}</p>
+    <p>Link til besked: <a href="{% url 'sms_app_Message_detail' message %}">id: {{ message }}</a></p>
 
     </div>
 
