@@ -196,8 +196,9 @@ def import_data(request):
         helpdesk@unord.dk
          
          '''
+        print('sending emai')
         unord_mail.send_email_with_attachments(email_from, recipient_list, email_subject, email_body, [], [], [])
-
+        print('email sent')
         return render(request, 'sms_app/upload_sms_list_success.html', {'message': message})
 
 
