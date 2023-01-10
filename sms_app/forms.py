@@ -3,6 +3,7 @@ from sms_app.models import Message
 from django.contrib.auth.models import User
 from . import models
 from bootstrap_datepicker_plus.widgets import DatePickerInput, TimePickerInput, DateTimePickerInput, MonthPickerInput, YearPickerInput
+from django.utils.translation import gettext_lazy as _
 
 DATETIME_FORMAT = '%d/%m/%Y %H:%M'
 
