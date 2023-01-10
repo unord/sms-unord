@@ -106,7 +106,7 @@ def approve_sms(request, link_code):
     message = models.Message.objects.get(link_code=link_code)
     message.validated_by_email = True
     message.save()
-    return render(request, 'sms_app/message_detail.html', {'message': message})
+    return render(request, 'sms_app/message_detail.html', {'pk': message})
 
 def reject_sms(request, link_code):
     try:
@@ -114,7 +114,7 @@ def reject_sms(request, link_code):
         message.delete()
     except:
         message = []
-    return render(request, 'sms_app/sms_deleted.html', {'message': message})
+    return render(request, 'sms_app/sms_deleted.html', {'pk': message})
 
 
 def import_data(request):
