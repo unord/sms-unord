@@ -2,10 +2,7 @@
 {% load static %}
 {% block content %}
 
-<p>
-    <a class="btn btn-light" href="{% url 'sms_app_Message_list' %}">
-    Message Listing
-    </a>
+
 </p>
     <form method="post" enctype="multipart/form-data">
   {% csrf_token %}

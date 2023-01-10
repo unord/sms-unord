@@ -10,7 +10,7 @@ setInterval(function(){
     {% if user.is_authenticated %}
     <div><a class="btn btn-primary" href="{% url 'sms_app_Message_list' %}">Se SMS list</a> <a class="btn btn-success" href="{% url 'sms_app_import_data' %}">Upload Excel fil</a></div>
     {% endif %}
-    <h1>Besked liste</h1>
+    <h1>Besked Dashboard</h1>
 
     <br/>
     {% if messages %}

@@ -2,11 +2,9 @@
 {% load static %}
 {% block content %}
 <div>
-    <h1>
-Upload gennemført
-</h1>
-<div class="m-2"><a class="btn btn-primary" href="{% url 'sms_app_Message_list' %}">Se SMS list</a> <a class="btn btn-primary" href="{% url 'sms_app_Message_Dashboard' %}">Se SMS behandlings kø</a> <a class="btn btn-success" href="{% url 'sms_app_UploadSms_list' %}">Upload excel ark</a></div>
 
+<div class="m-2"><a class="btn btn-primary" href="{% url 'sms_app_Message_list' %}">Se SMS list</a> <a class="btn btn-primary" href="{% url 'sms_app_Message_Dashboard' %}">Se SMS behandlings kø</a> <a class="btn btn-success" href="{% url 'sms_app_UploadSms_list' %}">Upload excel ark</a></div>
+    <h1>Upload gennemført</h1>
 
     <p>Link til besked: <a href="{% url 'sms_app_Message_detail' message %}">id: {{ message }}</a></p>
 
