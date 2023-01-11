@@ -123,8 +123,7 @@ def reject_sms(request, link_code):
     return render(request, 'sms_app/sms_deleted.html', {'object': message})
 
 
-@method_decorator(login_required, name='dispatch')
-def import_data(self, request):
+def import_data(request):
     if request.method == 'POST':
         file = request.FILES['file']
         df_excel_file = pd.read_excel(file, header=None)
