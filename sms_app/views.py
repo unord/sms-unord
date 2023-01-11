@@ -182,7 +182,7 @@ def import_data(request):
 
         #loop through df_to_analyze and add each row to model Recipient matching the Message
         for index, row in df_to_analyze.iterrows():
-            models.Recipient.objects.create(message=message, mobile_number=row['mobile'], first_name=row['first_name'], last_name=row['last_name'])
+            models.Recipient.objects.create(message=message, mobile_number=clean_mobile(row['mobile']), first_name=row['first_name'], last_name=row['last_name'])
 
         email_from = 'ubot@unord.dk'
         recipient_list = [email,]
@@ -215,6 +215,15 @@ def generate_random_string(n):
 
   # Use ''.join() to convert the sequence of characters to a string
   return ''.join(random.choices(choices, k=n))
+
+
+def clean_mobile(mobile):
+    mobile = mobile.replace(" ", "")
+    mobile = mobile.replace("-", "")
+    mobile = mobile.replace("(", "")
+    mobile = mobile.replace(")", "")
+    mobile = mobile.replace("+45", "")
+    return mobile
 
 def letters_to_numbers(letter: str) -> int:
     if letter == "99":
