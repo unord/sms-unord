@@ -124,7 +124,7 @@ def reject_sms(request, link_code):
 
 
 @method_decorator(login_required, name='dispatch')
-def import_data(request):
+def import_data(self, request):
     if request.method == 'POST':
         file = request.FILES['file']
         df_excel_file = pd.read_excel(file, header=None)
