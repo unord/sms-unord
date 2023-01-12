@@ -169,9 +169,11 @@ def import_data(request):
         else:
             df_to_analyze[2] = ""
 
-        print(df_to_analyze)
+        print(f'df_to_analyze before nameing columns: {df_to_analyze}')
+
         df_to_analyze.rename(columns={0: 'mobile', 1: 'first_name', 2: 'last_name'}, inplace = True)
-        print(df_to_analyze)
+        print(f'df_to_analyze after nameing columns: {df_to_analyze}')
+
         mobile_error = []
         row_count = 0
         # loop through df_to_analyze['mobile'] and check if string only contains numbers
