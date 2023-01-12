@@ -158,7 +158,7 @@ def import_data(request):
         # create empty dataframe
         df_to_analyze = pd.DataFrame()
 
-        df_to_analyze[0] = df_excel_file[[inputGroupSelectMobile]].astype('string')
+        df_to_analyze[0] = df_excel_file[inputGroupSelectMobile].astype('string')
         if inputGroupSelectFistName != 99:
             df_to_analyze[1] = df_excel_file[inputGroupSelectFistName]
         else:
