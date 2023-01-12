@@ -38,8 +38,8 @@ class Recipient(models.Model):
 
     # Fields
     created = models.DateTimeField(auto_now_add=True, editable=False)
-    first_name = models.CharField(max_length=30)
-    last_name = models.CharField(max_length=30)
+    first_name = models.CharField(max_length=30, null=True, blank=True)
+    last_name = models.CharField(max_length=30, null=True, blank=True)
     mobile_number = models.TextField(max_length=11)
     last_updated = models.DateTimeField(auto_now=True, editable=False)
     sent = models.BooleanField(null=True, blank=True)
