@@ -151,6 +151,13 @@ def import_data(request):
         except:
             inputGroupSelectLastName = 99
 
+        print(f'inputGroupSelectMobile: {inputGroupSelectMobile}')
+        print(f'inputGroupSelectFistName: {inputGroupSelectFistName}')
+        print(f'inputGroupSelectLastName: {inputGroupSelectLastName}')
+
+        # create empty dataframe
+        df_to_analyze = pd.DataFrame()
+
         df_to_analyze[0] = df_excel_file[[inputGroupSelectMobile]].astype('string')
         if inputGroupSelectFistName != 99:
             df_to_analyze[1] = df_excel_file[inputGroupSelectFistName]
