@@ -127,6 +127,7 @@ def import_data(request):
     if request.method == 'POST':
         file = request.FILES['file']
         df_excel_file = pd.read_excel(file, header=None)
+        print(df_excel_file)
         email = request.POST['username']+'@unord.dk'
         message = request.POST['message']
         time_to_send = request.POST['sms_send']
@@ -155,8 +156,9 @@ def import_data(request):
         else:
             df_to_analyze[2] = ""
 
+        print(df_to_analyze)
         df_to_analyze.rename(columns={0: 'mobile', 1: 'first_name', 2: 'last_name'}, inplace = True)
-
+        print(df_to_analyze)
         mobile_error = []
         row_count = 0
         # loop through df_to_analyze['mobile'] and check if string only contains numbers
