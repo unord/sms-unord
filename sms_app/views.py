@@ -170,7 +170,10 @@ def import_data(request):
             row['mobile'] = row['mobile'].replace("+45", "")
 
             if not row['mobile'].isnumeric():
-                mobile_error.append(f"Fejl i telefon nummer række:{request.POST['inputGroupSelectMobile']}{row_count}. Værdi: {org_value}")
+                try:
+                    mobile_error.append(f"Fejl i telefon nummer række:{request.POST['inputGroupSelectMobile']}{row_count}. Værdi: {org_value}")
+                except:
+                    mobile_error.append(f"Fejl i telefon nummer række:{row_count}.")
 
         if len(mobile_error) > 0:
             print(df_to_analyze)
