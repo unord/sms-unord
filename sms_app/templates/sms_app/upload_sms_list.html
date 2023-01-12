@@ -10,7 +10,7 @@ Upload excel fil
         <tr>
             <td width="60%">
                 <form action="http://10.18.225.150:8001/sms_app/ValidateExcel/" method="post" enctype="multipart/form-data">
-
+                    {% csrf_token %}
                     {{ form.errors }}
                     <table class="table table-borderless">
         <tr>
