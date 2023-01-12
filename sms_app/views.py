@@ -126,7 +126,11 @@ def reject_sms(request, link_code):
 def import_data(request):
     if request.method == 'POST':
         file = request.FILES['file']
-        df_excel_file = pd.read_excel(file, header=None)
+        try:
+            df_excel_file = pd.read_excel(file, header=None)
+        except:
+            mobile_error = ["Fil fejl. Kan måske være tomme mellemrum kollonner eller tomme rækker"]
+            return render(request, 'sms_app/upload_sms_list_error.html', {'mobile_error': mobile_error})
         print(df_excel_file)
         email = request.POST['username']+'@unord.dk'
         message = request.POST['message']
