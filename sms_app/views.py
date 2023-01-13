@@ -197,7 +197,7 @@ def import_data(request):
             return render(request, 'sms_app/upload_sms_list_error.html', {'mobile_error': mobile_error})
 
         #add record to model Message and add df_to_analyze to model Recipient that belongs to Message
-        message = models.Message.objects.create(email=email, message=message, link_code=link_code, time_to_send=time_to_send, user=request.user.pk)
+        message = models.Message.objects.create(email=email, message=message, link_code=link_code, time_to_send=time_to_send, user_id=request.user_id)
 
         #loop through df_to_analyze and add each row to model Recipient matching the Message
         for index, row in df_to_analyze.iterrows():
