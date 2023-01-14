@@ -212,10 +212,10 @@ def import_data(request):
         Vi har modtaget en sms liste der skulle have været oprettede af dig.
          
          Hvis du har oprettet listen, så skal du godkende den ved at klikke på linket herunder.
-         http://10.18.225.150:8001/sms_app/approve_sms/{link_code}
+         http://sendsms-unord.dk/sms_app/approve_sms/{link_code}
          
         Hvis du ikke har oprettet listen, så skal du slette den ved at klikke på linket herunder.
-        http://10.18.225.150:8001/sms_app/reject_sms/{link_code}
+        http://sendsms-unord.dk/sms_app/reject_sms/{link_code}
          
         med venlig hilsen
         
