@@ -5,9 +5,10 @@ from django.urls import reverse
 class Message(models.Model):
 
     # Relationships
-    user = models.ForeignKey("auth.User", on_delete=models.SET_NULL, null=True, blank=True)
+
 
     # Fields
+    user = models.CharField(max_length=30, null=True, blank=True)
     link_code = models.CharField(max_length=30)
     time_to_send = models.DateTimeField()
     last_updated = models.DateTimeField(auto_now=True, editable=False)
