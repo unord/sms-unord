@@ -80,6 +80,18 @@ TEMPLATES = [
     },
 ]
 
+# The link above contains all settings
+BOOTSTRAP_DATEPICKER_PLUS = {
+    "options": {
+        "locale": "bn",
+    },
+    "variant_options": {
+        "date": {
+            "format": "MM/DD/YYYY",
+        },
+    }
+}
+
 WSGI_APPLICATION = 'MessageSys.wsgi.application'
 
 
