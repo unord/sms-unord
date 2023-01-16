@@ -52,7 +52,7 @@
 
 
             {% endif %}
-             </ul>
+             </ul> {% now 'd/m-Y H:i' %}
             <!-- Login/Logud -->
             {% if user.is_authenticated %}
                 {% if user.is_superuser %}
