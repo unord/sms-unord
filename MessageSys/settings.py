@@ -83,7 +83,7 @@ TEMPLATES = [
 # The link above contains all settings
 BOOTSTRAP_DATEPICKER_PLUS = {
     "options": {
-        "locale": "bn",
+        "locale": "da",
     },
     "variant_options": {
         "date": {
