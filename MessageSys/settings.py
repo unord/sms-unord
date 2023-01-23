@@ -90,7 +90,7 @@ BOOTSTRAP_DATEPICKER_PLUS = {
             "format": "DD/MM/YYYY",
         },
          "datetime": {
-             "format": "DD/DD/YYYY HH:mm",
+             "format": "DD/MM/YYYY HH:mm",
          },
     }
 }
