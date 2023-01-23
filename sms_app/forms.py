@@ -34,7 +34,7 @@ class MessageForm(forms.ModelForm):
         attrs={'class': 'form-control', 'rows': 5, }))
     time_to_send = forms.DateTimeField(input_formats=[DATETIME_FORMAT],
                                              widget=DateTimePickerInput(format=DATETIME_FORMAT),
-                                             label=_("Hvornår skal smserne sendes"), required=True, )
+                                             label=_("Hvornår skal smserne sendes"), required=True, attrs={'class': 'form-control', })
 
     class Meta:
         model = models.Message
