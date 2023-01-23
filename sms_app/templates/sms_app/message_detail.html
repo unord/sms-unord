@@ -39,8 +39,9 @@
     <tr><td>created</td><td>{{ object.created }}</td></tr>
 </table>
     {% if user.is_authenticated %}
+        {% if not object.completed %}
 <a class="btn btn-primary" href="{{object.get_update_url}}">Rediger</a> <a class="btn btn-danger" href="{% url 'sms_app_Message_delete' object.pk %}">Slet</a>
-{% endif %}
+{% endif %}{% endif %}
     <br>
      {% if object_list_recipient_list %}
          <br>
