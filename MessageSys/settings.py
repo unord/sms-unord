@@ -29,7 +29,7 @@ LOGIN_URL = "login"
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['https://sendsms.unord.dk']
+ALLOWED_HOSTS = ['sendsms.unord.dk']
 
 #SECURE_SSL_REDIRECT = False
 
