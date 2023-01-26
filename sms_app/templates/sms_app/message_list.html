@@ -4,9 +4,9 @@
 {% load static %}
 {% block content %}
     <div><p>
-    <a class="btn btn-primary" href="{% url 'sms_app_Message_Dashboard' %}">SMS behdlings status</a> <a class="btn btn-success" href="{% url 'sms_app_UploadSms_list' %}">Upload Excel fil</a></div>
+    <a class="btn btn-primary" href="{% url 'sms_app_Message_Dashboard' %}">SMS behandlingsstatus</a> <a class="btn btn-success" href="{% url 'sms_app_UploadSms_list' %}">Upload Excelfil</a></div>
 </p>
-<h1>Besked liste</h1>
+<h1>Sms-liste</h1>
 
 
       {% if object_list %}
@@ -18,10 +18,10 @@
                     Id
                 </td>
                 <td>
-                    <center>Bruger login</center>
+                    <center>Brugerlogin</center>
                 </td>
                 <td>
-                    <center>Validerings email</center>
+                    <center>Valideringsemail</center>
                 </td>
 <td>
                     <center>Sendes</center>
