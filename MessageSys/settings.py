@@ -30,6 +30,7 @@ LOGIN_URL = "login"
 DEBUG = True
 
 ALLOWED_HOSTS = ['sendsms.unord.dk']
+CSRF_TRUSTED_ORIGINS = ['https://sendsms.unord.dk']
 
 #SECURE_SSL_REDIRECT = False
 
