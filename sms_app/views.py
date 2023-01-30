@@ -209,12 +209,12 @@ def import_data(request):
         email_body= f'''
         Hej {email.replace('@unord.dk', '').upper()}
         
-        Vi har modtaget en sms liste der skulle have været oprettede af dig.
+        Vi har modtaget en sms-liste der skulle have været oprettede af dig.
          
-         Hvis du har oprettet listen, så skal du godkende den ved at klikke på linket herunder.
+         Hvis du har oprettet listen, skal du godkende den ved at klikke på linket herunder.
          http://sendsms.unord.dk/sms_app/approve_sms/{link_code}
          
-        Hvis du ikke har oprettet listen, så skal du slette den ved at klikke på linket herunder.
+        Hvis du ikke har oprettet listen, skal du slette den ved at klikke på linket herunder.
         http://sendsms.unord.dk/sms_app/reject_sms/{link_code}
          
         med venlig hilsen
