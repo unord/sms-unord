@@ -238,6 +238,7 @@ def generate_random_string(n):
 
 
 def clean_mobile(mobile):
+    mobile = str(mobile)
     mobile = mobile.replace(" ", "")
     mobile = mobile.replace("-", "")
     mobile = mobile.replace("(", "")
