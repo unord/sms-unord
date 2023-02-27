@@ -186,6 +186,7 @@ def import_data(request):
             new_value = new_value.replace("(", "")
             new_value = new_value.replace(")", "")
             new_value = new_value.replace("+45", "")
+            new_value = new_value.replace(".0", "")
 
             if not new_value.isnumeric():
                 try:
@@ -244,6 +245,7 @@ def clean_mobile(mobile):
     mobile = mobile.replace("(", "")
     mobile = mobile.replace(")", "")
     mobile = mobile.replace("+45", "")
+    mobile = mobile.replace(".0", "")
     return mobile
 
 def letters_to_numbers(letter: str) -> int:
