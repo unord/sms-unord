@@ -192,7 +192,7 @@ def import_data(request):
                 try:
                     mobile_error.append(f"Fejl i telefon nummer række: {request.POST['inputGroupSelectMobile']}{row_count}. Værdi: {org_value.replace('<NA>', 'Tom felt')}")
                 except:
-                    mobile_error.append(f"Fejl i telefon nummer række: {row_count}.")
+                    mobile_error.append(f"Fejl i telefon nummer række: {request.POST['inputGroupSelectMobile']}{row_count}.")
 
         if len(mobile_error) > 0:
             print(df_to_analyze)
