@@ -187,7 +187,7 @@ def import_data(request):
             row['mobile'] = new_value.replace(")", "")
             row['mobile'] = new_value.replace("+45", "")
 
-            if not row['mobile'].isnumeric():
+            if not new_value.isnumeric():
                 try:
                     mobile_error.append(f"Fejl i telefon nummer række:{request.POST['inputGroupSelectMobile']}{row_count}. Værdi: {org_value}")
                 except:
