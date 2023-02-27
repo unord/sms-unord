@@ -180,11 +180,12 @@ def import_data(request):
         for index, row in df_to_analyze.iterrows():
             row_count += 1
             org_value = row['mobile']
-            row['mobile'] = row['mobile'].replace(" ", "")
-            row['mobile'] = row['mobile'].replace("-", "")
-            row['mobile'] = row['mobile'].replace("(", "")
-            row['mobile'] = row['mobile'].replace(")", "")
-            row['mobile'] = row['mobile'].replace("+45", "")
+            new_value = str(row['mobile'])
+            row['mobile'] = new_value.replace(" ", "")
+            row['mobile'] = new_value.replace("-", "")
+            row['mobile'] = new_value.replace("(", "")
+            row['mobile'] = new_value.replace(")", "")
+            row['mobile'] = new_value.replace("+45", "")
 
             if not row['mobile'].isnumeric():
                 try:
