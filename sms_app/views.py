@@ -181,11 +181,11 @@ def import_data(request):
             row_count += 1
             org_value = row['mobile']
             new_value = str(row['mobile'])
-            row['mobile'] = new_value.replace(" ", "")
-            row['mobile'] = new_value.replace("-", "")
-            row['mobile'] = new_value.replace("(", "")
-            row['mobile'] = new_value.replace(")", "")
-            row['mobile'] = new_value.replace("+45", "")
+            new_value = new_value.replace(" ", "")
+            new_value = new_value.replace("-", "")
+            new_value = new_value.replace("(", "")
+            new_value = new_value.replace(")", "")
+            new_value = new_value.replace("+45", "")
 
             if not new_value.isnumeric():
                 try:
