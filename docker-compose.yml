@@ -1,0 +1,32 @@
+version: '3.2'
+services:
+  web-app:
+    image: robounord/sms-unord-django:v1.08
+    container_name: sms-unord-django
+    command: "python manage.py runserver 0.0.0.0:8000"
+    networks:
+      - public
+    deploy:
+      labels:
+       - "traefik.enable=true"
+       - "traefik.http.routers.sendsms.rule=Host(`sendsms.unord.dk`)"
+       - "traefik.http.routers.sendsms.entrypoints=websecure"
+       - "traefik.http.routers.sendsms.tls=true"
+       - "traefik.http.services.sendsms.loadbalancer.server.port=8000"
+       - "traefik.http.services.sendsms.loadbalancer.server.scheme=http"
+       - "traefik.http.services.sendsms.loadbalancer.passHostHeader=true"
+
+    volumes:
+      - /home/robo/docker-volumes/sms-unord/code/sms-unord:/app
+
+
+  worker:
+    image: robounord/sms-unord-worker:v1.02
+    container_name: sms-unord-worker
+    command: "python src/main.py"
+    volumes:
+      - /home/robo/docker-volumes/sms-unord-worker/sms-unord-worker:/app
+
+networks:
+  public:
+    external: true
