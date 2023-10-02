@@ -180,17 +180,19 @@ def import_data(request):
         for index, row in df_to_analyze.iterrows():
             row_count += 1
             org_value = row['mobile']
-            row['mobile'] = row['mobile'].replace(" ", "")
-            row['mobile'] = row['mobile'].replace("-", "")
-            row['mobile'] = row['mobile'].replace("(", "")
-            row['mobile'] = row['mobile'].replace(")", "")
-            row['mobile'] = row['mobile'].replace("+45", "")
+            new_value = str(row['mobile'])
+            new_value = new_value.replace(" ", "")
+            new_value = new_value.replace("-", "")
+            new_value = new_value.replace("(", "")
+            new_value = new_value.replace(")", "")
+            new_value = new_value.replace("+45", "")
+            new_value = new_value.replace(".0", "")
 
-            if not row['mobile'].isnumeric():
+            if not new_value.isnumeric():
                 try:
-                    mobile_error.append(f"Fejl i telefon nummer række:{request.POST['inputGroupSelectMobile']}{row_count}. Værdi: {org_value}")
+                    mobile_error.append(f"Fejl i telefon nummer række: {request.POST['inputGroupSelectMobile']}{row_count}. Værdi: {org_value.replace('<NA>', 'Tom felt')}")
                 except:
-                    mobile_error.append(f"Fejl i telefon nummer række:{row_count}.")
+                    mobile_error.append(f"Fejl i telefon nummer række: {request.POST['inputGroupSelectMobile']}{row_count}. Telefon må kun bestå af 8 tal. Ikke være tomt eller indeholde bogstaver eller + tegn.")
 
         if len(mobile_error) > 0:
             print(df_to_analyze)
@@ -237,11 +239,13 @@ def generate_random_string(n):
 
 
 def clean_mobile(mobile):
+    mobile = str(mobile)
     mobile = mobile.replace(" ", "")
     mobile = mobile.replace("-", "")
     mobile = mobile.replace("(", "")
     mobile = mobile.replace(")", "")
     mobile = mobile.replace("+45", "")
+    mobile = mobile.replace(".0", "")
     return mobile
 
 def letters_to_numbers(letter: str) -> int:
