@@ -76,9 +76,6 @@ For at installere alle de nødvendige pakker, kør følgende kommando i din term
 ```
 pip install -r requirements.txt
 ```
-
-Dette vil installere alle de nødvendige afhængigheder og gøre det lettere for andre udviklere at forstå, hvad hver pakke gør i dit projekt.
-
 ---
 
 ## `sms_app`
