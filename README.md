@@ -53,8 +53,6 @@
 
 ---
 
-Selvfølgelig, her er en eksempeltekst på dansk, som du kan inkludere i din README-fil for at beskrive de enkelte pakker i din `requirements.txt`:
-
 ## Afhængigheder (requirements.txt)
 
 Projektet anvender følgende Python-biblioteker, som er angivet i `requirements.txt`:
@@ -83,7 +81,7 @@ Dette vil installere alle de nødvendige afhængigheder og gøre det lettere for
 
 ---
 
-## README Dokumentation for `sms_app` Django Projekt
+## `sms_app`
 
 ### Introduktion
 
@@ -158,5 +156,5 @@ Relation: One-to-Many til `Recipient` via `message_id`
 
 - **Hvad gør `letters_to_numbers` funktionen?**
 
-  - Den konverterer en bogstavkolonnebetegnelse til et kolonnenummer (f.eks., "A" bliver til 1, "Z" til 26).
+  - Den konverterer en bogstavkolonnebetegnelse til et kolonnenummer (f.eks., "A" bliver til 1, "Z" til 26). Det bruges så pandas nemer kan finde den rette celle. 
 
